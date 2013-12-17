@@ -59,7 +59,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sundardb',
-        'USER': ‘sundar’,
+        'USER': 'sundar',
         'PASSWORD': 'mAR.20ecWk',
         'HOST': 'sundar-instance-1.cxpjixe6nt87.us-west-2.rds.amazonaws.com:3306',
         'PORT': '3306',
