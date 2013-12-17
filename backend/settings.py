@@ -61,7 +61,7 @@ DATABASES = {
         'NAME': 'sundardb',
         'USER': 'sundar',
         'PASSWORD': 'mAR.20ecWk',
-        'HOST': 'sundar-instance-1.cxpjixe6nt87.us-west-2.rds.amazonaws.com:3306',
+        'HOST': 'sundar-instance-1.cxpjixe6nt87.us-west-2.rds.amazonaws.com',
         'PORT': '3306',
     }
 }
