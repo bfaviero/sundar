@@ -16,7 +16,7 @@ framework.
 import os
 
 import sys
-sys.path.insert(0, '/var/www/sundar-backend')
+sys.path.insert(0, '/var/django/sundar-backend')
 
 # We defer to a DJANGO_SETTINGS_MODULE already in the environment. This breaks
 # if running multiple sites in the same mod_wsgi process. To fix this, use
