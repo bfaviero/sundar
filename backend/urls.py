@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
-from item_api import get_item, update_item, delete_item, get_items
+from item_api import index, get_item, update_item, delete_item, get_items
 from supplier_api import create_supplier, update_supplier, delete_supplier, login_supplier
-from designer_api import create_designer, update_designer, delete_supplier, login_designer
+from designer_api import create_designer, update_designer, delete_designer, login_designer
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
