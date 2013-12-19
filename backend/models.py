@@ -13,7 +13,7 @@ class CurrencyField(models.DecimalField):
 class Supplier(models.Model):
     """supplier description"""
     #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
-    user_id = models.ForeignKey(models.User, unique=True)
+    user_id = models.CharField(max_length=40)
     email_addr = models.EmailField(max_length=255)
     password = models.CharField(max_length=255, widget=forms.PasswordInput)    
     time_created = models.DateTimeField(auto_now_add=True)
@@ -22,7 +22,7 @@ class Supplier(models.Model):
 class Item(models.Model):
     """supplier items"""
     #image = models.ImageField(upload_to=)
-    supplier_id = models.ForeignKey()
+    supplier_id = models.CharField(max_length=40)
     images_json_list = models.TextField(null=True)
     material = models.TextField()#DataFrame of DeviceMotion data
     cost = CurrencyField()
@@ -32,7 +32,7 @@ class Item(models.Model):
 class Designer(models.Model):
     """designer description"""
     #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
-    user_id = models.ForeignKey(models.User, unique=True)
+    user_id = models.CharField(max_length=40)
     email_addr = models.EmailField(max_length=255)
     password = models.CharField(max_length=255, widget=forms.PasswordInput)    
     time_created = models.DateTimeField(auto_now_add=True)
