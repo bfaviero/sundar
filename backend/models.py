@@ -15,7 +15,7 @@ class Supplier(models.Model):
     #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
     user_id = models.CharField(max_length=40)
     email_addr = models.EmailField(max_length=255)
-    password = models.CharField(max_length=255, widget=forms.PasswordInput)    
+    password = models.CharField(max_length=255)    
     time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now_add=True)
 
@@ -34,7 +34,7 @@ class Designer(models.Model):
     #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
     user_id = models.CharField(max_length=40)
     email_addr = models.EmailField(max_length=255)
-    password = models.CharField(max_length=255, widget=forms.PasswordInput)    
+    password = models.CharField(max_length=255)    
     time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now_add=True)
 
