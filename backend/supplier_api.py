@@ -13,4 +13,4 @@ def delete_supplier(request):
     return HttpResponse("SUCCESS delete_supplier ")
 
 def login_supplier(request):
-    passreturn HttpResponse("SUCCESS login_supplier ")
+    return HttpResponse("SUCCESS login_supplier ")
