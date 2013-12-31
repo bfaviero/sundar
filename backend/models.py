@@ -25,7 +25,7 @@ class Item(models.Model):
     supplier_id = models.CharField(max_length=512)
     images_json_list = models.TextField(null=True)
     material = models.TextField()#DataFrame of DeviceMotion data
-    cost = CurrencyField()
+    cost = models.CharField(max_length=32)
     time_updated = models.DateTimeField(auto_now_add=True)
     time_created = models.DateTimeField(auto_now_add=True)
 

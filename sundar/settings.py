@@ -73,20 +73,20 @@ TEMPLATE_DIRS = (
 )
 
 
-#MEDIA_URL = '/media/'
-#MEDIA_ROOT = '/media/'
+MEDIA_URL = ''
+MEDIA_ROOT = ''
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-#STATIC_URL = '/mobile/static/'
+STATIC_URL = '/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(BASE_DIR, "static"),
-    BASE_DIR + '../mobile/static/',
-    #'/var/www/sundar-backend/mobile/static/',
+    #BASE_DIR + '../mobile/static/',
+    os.path.join(BASE_DIR, "../mobile/static"),
+    '/var/www/sundar-backend/mobile/static/',
 
 )
 # List of finder classes that know how to find static files in
