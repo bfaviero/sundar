@@ -69,8 +69,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    BASE_DIR + 'templates/',
-    '/var/www/sundar-backend/mobile/static/',
+    BASE_DIR + '../mobile/templates/',
 )
 
 
@@ -79,14 +78,16 @@ TEMPLATE_DIRS = (
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_URL = '/mobile/static/'
+#STATIC_URL = '/mobile/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(BASE_DIR, "static")
+    os.path.join(BASE_DIR, "static"),
     BASE_DIR + '../mobile/static/',
+    #'/var/www/sundar-backend/mobile/static/',
+
 )
 # List of finder classes that know how to find static files in
 # various locations.
