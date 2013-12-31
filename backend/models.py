@@ -37,5 +37,3 @@ class Designer(models.Model):
     password = models.CharField(max_length=255)    
     time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now_add=True)
-
- 

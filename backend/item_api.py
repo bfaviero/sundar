@@ -5,16 +5,21 @@ from django.core.context_processors import csrf
 
 
 def index(request):
+    print "index page request"
     return HttpResponse("SUCCESS INDEX")
 
 def get_item(request):
+    print "get item %s request" % request_arg(request, "item_id")
     return HttpResponse("SUCCESS GET_ITEM")
 
 def update_item(request):
+    print "index page request"
     return HttpResponse("SUCCESS UPDATE ITEM")
 
 def delete_item(request):
+    print "index page request"
     return HttpResponse("SUCCESS DELETE ITEM")
 
 def get_items(request):
+    print "index page request"
     return HttpResponse("SUCCESS GET ITEMS")
