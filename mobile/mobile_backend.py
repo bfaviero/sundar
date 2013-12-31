@@ -9,7 +9,7 @@ def index(request):
 def render_edit_product(request):
     return Template("edit_product.html")
 
-def render_product_listdex(request):
+def render_product_list(request):
     return Template("product_list.html")
 
 def render_sign_up(request):
