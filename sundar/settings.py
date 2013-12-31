@@ -87,8 +87,8 @@ STATICFILES_DIRS = (
     #BASE_DIR + '../mobile/static/',
     os.path.join(BASE_DIR, "../mobile/static"),
     '/var/www/sundar-backend/mobile/static/',
-
 )
+
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
