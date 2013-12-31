@@ -3,11 +3,6 @@ from utils import request_arg, optional_request_arg
 from django.http import HttpResponse
 from django.core.context_processors import csrf
 
-
-def index(request):
-    print "index page request"
-    return HttpResponse("SUCCESS INDEX")
-
 def get_item(request):
     print "get item %s request" % request_arg(request, "item_id")
     return HttpResponse("SUCCESS GET_ITEM")

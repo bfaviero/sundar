@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sundar | Log in</title>
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css" type="text/css"/>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <h3>Log in to Sundar as a supplier</h3>
+    <br>
+
+    <!-- //TODO: Replace this link with a real action that validates login credentials -->
+    <form method="POST" action="product_list.html">
+
+      <table class="table">
+        <!-- Use email address as unique user ID instead of username -->
+        <tr>
+          <td><label>Email Address</label></td>
+          <td><input name="emailAddress" type="text" placeholder="name@example.com"/></td>
+        </tr>
+
+        <!-- Password -->
+        <tr>
+          <td><label>Password</label></td>
+          <td><input name="password" type="password" placeholder="Password"/></td>
+        </tr>
+
+        <!-- Submit button -->
+        <tr>
+          <td><input type="submit" name="submit" value="Log in" class="btn btn-large btn-primary"></td>
+          <td></td>
+        </tr>
+      <br>
+      
+      </table>
+    </form>
+
+    <hr>
+    <p>Not yet a member? <a href="signup.html" class="btn btn-large btn-primary">Join Sundar</a></p>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+  <div>
+
+</body>
+</html>

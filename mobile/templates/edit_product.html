@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sundar | Edit Product</title>
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" type="text/css"/>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+  <script>
+    var myInput = document.getElementById('myFileInput');
+
+    function sendPic() {
+      var file = myInput.files[0];
+
+      // Send file here either by adding it to a `FormData` object
+      // and sending that via XHR, or by simply passing the file into
+      // the `send` method of an XHR instance.
+    }
+
+    myInput.addEventListener('change', sendPic, false);
+  </script>
+</head>
+
+<body>
+  <div class="container">
+
+    <h2>Upload a new product, or edit an existing one</h2>
+    <br>
+
+    <!-- //TODO: Insert a real action here that updates a product or uploads a new one -->
+    <form method="POST" action="product_list.html">
+      <table class="table table-striped">
+
+        <!-- Product name -->
+        <!-- //TODO: Maybe add some code (that's called if you're editing an existing product) to auto-populate the fields with the values currently saved for this product -->
+        <tr>
+          <td><label>Product name</label></td>
+          <td><input name="productName" type="text" placeholder="Product name"/></td>
+        </tr>
+
+        <!-- Upload photo -->
+        <tr>
+          <td><label>Upload photo</label></td>
+          <td><input id="myFileInput" type="file" accept="image/*;capture=camera"></td>
+        </tr>
+
+        <!-- In stock/made to order -->
+        <tr>
+          <td><label>In stock</label></td>
+          <td><input type="checkbox" id="in_stock">In stock</input></td>
+        </tr>
+
+        <!-- Unit price -->
+        <tr>
+          <td><label>Wholesale price</label></td>
+          <td><input type="number" size="10" name="price" placeholder="0.00" />
+              <select id="price_units" style="font-size:1.1em;">
+                <option value="USD_per_yard">USD per yard</option>
+                <option value="USD_per_meter">USD per meter</option>
+                <option value="USD_per_piece">USD per piece</option>
+              </select></td>
+        </tr>
+
+        <!-- Width -->
+        <tr>
+          <td><label>Fabric width</label></td>
+          <td><input type="number" size="10" name="price" placeholder="0.00" />
+              <select id="width" style="font-size:1.1em;">
+                <option value="cm">centimeters</option>
+                <option value="in">inches</option>
+              </select></td>
+        </tr>
+
+        <!-- Material type -->
+        <tr>
+          <td><label>Textile type</label></td>
+          <td><select id="textile_types" style="font-size:1.1em;">
+            <option value="Denim">Denim</option>
+            <option value="Drill">Drill</option>
+            <option value="Garbadine">Garbadine</option>
+            <option value="Pile">Pile</option>
+            <option value="Plush">Plush</option>
+            <option value="Satin">Satin</option>
+            <option value="Serge">Serge</option>
+            <option value="Terry">Terry</option>
+          </select></td>
+        </tr>
+
+        <!-- Weave type -->
+        <tr>
+          <td><label>Weave type</label></td>
+          <td><select id="weave_types" style="font-size:1.1em;">
+            <option value="BasketMatt">Basket/Matt</option>
+            <option value="FourHarnessSatin">Crowfoot/Four Harness Satin</option>
+            <option value="EightHarnessSatin">Eight Harness Satin</option>
+            <option value="Jacquard">Jacquard</option>
+            <option value="Knit">Knit</option>
+            <option value="Lano">Lano</option>
+            <option value="MockLano">Mock Lano</option>
+            <option value="Plain">Plain</option>
+            <option value="Rib">Rib</option>
+            <option value="Sateen">Sateen</option>
+            <option value="TricotKnit">Tricot Knit</option>
+            <option value="Twill">Twill</option>
+            <option value="NA">N/A</option>
+          </select></td>
+        </tr>
+
+      </table>
+
+      <!-- Submit button -->
+      <input type="submit" name="submit" value="Upload product" class="btn btn-large btn-primary">
+      <br>
+    </form>
+
+    <hr>
+    <p>Having trouble with this form, or want to send feedback? <a href="mailto:hello@sundar.com">Contact Sundar</a></p>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+  <div>
+
+</body>
+</html>
