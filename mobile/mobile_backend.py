@@ -3,6 +3,11 @@ from django.http import HttpResponse
 from django.core.context_processors import csrf
 from templating import Template, error_page
 
+def render_login(request):
+    context = {}
+    context.update(csrf(request))
+    return Template("login.html", context)
+
 def login(request):
     context = {}
     context.update(csrf(request))
