@@ -7,7 +7,7 @@ admin.autodiscover()
 from mobile.mobile_backend import index
 
 urlpatterns = patterns('',
-    url(r'^$', index),
+    url(r'^$', include('web.urls')),
     url(r'^api/', include('backend.urls')),
     url(r'^mobile/', include('mobile.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:

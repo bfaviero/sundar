@@ -3,10 +3,10 @@ from django.http import HttpResponse
 from django.core.context_processors import csrf
 from templating import Template, error_page
 
-def index(request):
+def login(request):
     context = {}
     context.update(csrf(request))
-    return Template("index.html", context)
+    return Template("login.html", context)
 
 def render_edit_product(request):
     return Template("edit_product.html")
