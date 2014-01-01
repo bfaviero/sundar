@@ -4,10 +4,13 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+from mobile.mobile_backend import login
+
 urlpatterns = patterns('',
-    url(r'^$', include('web.urls')),
+    url(r'^$', login),
     url(r'^api/', include('backend.urls')),
     url(r'^mobile/', include('mobile.urls')),
+    url(r'^web/', include('web.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # Uncomment the next two lines to enable the admin:

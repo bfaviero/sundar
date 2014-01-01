@@ -4,6 +4,6 @@ from web.web_backend import login, search
 urlpatterns = patterns('',
     url(r'^$', login),
     url(r'^login', login),
-    url(r'^search/', search),
+    url(r'^search', search),
 )
 
