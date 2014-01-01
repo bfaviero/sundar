@@ -5,6 +5,8 @@ class BadRequestError(Exception): pass
 
 alphanum_pattern = compile("[\W_]+")
 
+class BadRequestError(Exception): pass
+
 def alphanum(string):
     return alphanum_pattern.sub("", string)
 
