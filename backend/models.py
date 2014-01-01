@@ -17,6 +17,7 @@ class Supplier(models.Model):
 class Item(models.Model):
     """supplier items"""
     #image = models.ImageField(upload_to=)
+    supplier_id = models.CharField(max_length=128)
     image1_url = models.CharField(max_length=64, default="", blank=True)
     image2_url = models.CharField(max_length=64, default="", blank=True)
     image3_url = models.CharField(max_length=64, default="", blank=True)
