@@ -42,7 +42,7 @@ def info(name):
         for key in bucket:
             print key.name.encode('utf-8')
 
-def upload_image(image, user_id, item_id, ):
+def upload_image(image, user_id, item_id):
     bucket = get_bucket()
     bucket_key = Key(bucket)
     #TODO: compress the file with tar

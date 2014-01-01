@@ -9,9 +9,13 @@ def render_login(request):
     return Template("login.html", context)
 
 def login(request):
-    context = {}
-    context.update(csrf(request))
+    email_addr = request_arg(request, "email_addr")
+    password = request_arg(request, "password")
+    return redirect("/main")
+
     return Template("login.html", context)
+
+make_password
 
 def render_edit_product(request):
     return Template("edit_product.html")

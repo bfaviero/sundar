@@ -16,10 +16,10 @@
     <h3>Create an account as a Sundar supplier</h3>
 
     <!-- //TODO: Replace this action with a real action that creates an account -->
-    <form method="POST" action="/mobile/product_list.html">
-
+    <form method="POST" id="signup_form" action="/mobile/product_list.html">
+      <input id="csrfmiddlewaretoken" style="display: none;" value="{{ csrf_token }}">
       <table class="table">
-        <!-- Username -->
+        <!-- Username --> 
         <tr>
           <td><label>Company Name</label></td>
           <td><input name="supplierName" type="text" placeholder="Company Name"/></td>
@@ -55,7 +55,7 @@
     </form>
 
     <hr>
-    <p>Already have an account? Go to the <a href="/">login page</a>.</p>
+    <p>Already have an account? Go to the <a href="/mobile/">login page</a>.</p>
     <br><br><br><br><br><br><br><br><br><br><br><br>
   <div>
 
