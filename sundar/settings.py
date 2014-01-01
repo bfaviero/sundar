@@ -48,6 +48,8 @@ INSTALLED_APPS = (
     'backend',
     'mobile',
     'sundar',
+    'web',
+    'static'
 )
 
 MIDDLEWARE_CLASSES = (
