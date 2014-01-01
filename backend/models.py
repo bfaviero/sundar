@@ -11,7 +11,7 @@ class Supplier(models.Model):
     email_addr = models.EmailField(max_length=255)
     password = models.CharField(max_length=512)    
     time_created = models.DateTimeField(auto_now_add=True)
-    last_logged_in = models.DateTimeField(auto_now_add=True)
+    last_logged_in = models.DateTimeField(auto_now=True)
     company_name = models.CharField(db_index=True, max_length=128, default="", blank=True)
 
 class Item(models.Model):
@@ -42,7 +42,7 @@ class Item(models.Model):
     country_origin = models.CharField(max_length=32, default="", blank=True)
     sustainability = models.CharField(max_length=32, default="", blank=True)
     cost = models.CharField(max_length=32, default="", blank=True)
-    time_updated = models.DateTimeField(auto_now_add=True)
+    time_updated = models.DateTimeField(auto_now=True)
     time_created = models.DateTimeField(auto_now_add=True)
 
 class Designer(models.Model):
@@ -51,7 +51,7 @@ class Designer(models.Model):
     email_addr = models.EmailField(max_length=255)
     password = models.CharField(max_length=255)    
     time_created = models.DateTimeField(auto_now_add=True)
-    last_logged_in = models.DateTimeField(auto_now_add=True)
+    last_logged_in = models.DateTimeField(auto_now=True)
 
 
 class PhotoUrl(models.Model):
