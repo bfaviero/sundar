@@ -1,16 +1,21 @@
 from django.conf.urls import patterns, include, url
-
+from backend import urls 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
+
+import backend.urls
+import mobile.urls
+import web.urls
+import backend.s3_api
 
 from mobile.mobile_backend import login
 
 urlpatterns = patterns('',
     url(r'^$', login),
-    url(r'^api/', include('backend.urls')),
-    url(r'^mobile/', include('mobile.urls')),
-    url(r'^web/', include('web.urls')),
+    url(r'^api/', include(backend.urls)),
+    url(r'^mobile/', include(mobile.urls)),
+    url(r'^web/', include(web.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # Uncomment the next two lines to enable the admin:
@@ -19,3 +24,4 @@ urlpatterns = patterns('',
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns += staticfiles_urlpatterns()
+
