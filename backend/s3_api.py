@@ -32,20 +32,20 @@ def percent_complete(complete, total):
     sys.stdout.write('.')
     sys.stdout.flush()
 
-def info(name):
+def info():
     buckets = conn.get_all_buckets()
     print "There are %s total buckets:" % len(buckets)
     for bucket in buckets:
         print "Files in %s" % bucket.name 
         bucket = get_bucket()
-        print "In the bucket %s:" % name    
+        #print "In the bucket %s:" % name
         for key in bucket:
             print key.name.encode('utf-8')
 
 def upload_image(image, user_id, item_id):
-    bucket = get_bucket()
+    bucket = get_bucket(IMAGES_BUCKET_NAME)
     bucket_key = Key(bucket)
-    time_stamp = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
+    time_stamp = datetime.now().strftime("%y%m%d_%H%M%S")
     bucket_key.key = user_id + "." + item_id + "." + time_stamp
     print 'Uploading with bucket key %s to Amazon S3 bucket %s' % (bucket_key.name.encode('utf-8'), IMAGES_BUCKET_NAME)
     bucket_key.set_contents_from_filename(image, cb=percent_complete, num_cb=10)
