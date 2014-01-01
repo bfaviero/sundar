@@ -4,8 +4,6 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from mobile.mobile_backend import index
-
 urlpatterns = patterns('',
     url(r'^$', include('web.urls')),
     url(r'^api/', include('backend.urls')),
