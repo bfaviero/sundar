@@ -72,7 +72,6 @@ TEMPLATE_DIRS = (
     BASE_DIR + '../mobile/templates/',
 )
 
-
 MEDIA_URL = ''
 MEDIA_ROOT = ''
 
@@ -85,7 +84,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     #BASE_DIR + '../mobile/static/',
-    os.path.join(BASE_DIR, "../mobile/static"),
+    #os.path.join(BASE_DIR, "../mobile/static"),
     '/var/www/sundar-backend/mobile/static/',
 )
 
