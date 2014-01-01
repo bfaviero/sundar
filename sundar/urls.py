@@ -14,5 +14,6 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # Uncomment the next two lines to enable the admin:
+     (r'^media/(?P<path>.*)$', 'django.views.static.serve',
     url(r'^admin/', include(admin.site.urls)),
 )
