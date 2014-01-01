@@ -1,8 +1,6 @@
 import traceback
 from re import compile
 
-class BadRequestError(Exception): pass
-
 alphanum_pattern = compile("[\W_]+")
 
 class BadRequestError(Exception): pass
