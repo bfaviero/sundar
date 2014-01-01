@@ -2,7 +2,7 @@ from utils import request_arg, optional_request_arg
 from django.http import HttpResponse
 from django.core.context_processors import csrf
 from templating import Template, error_page
-from django.contrib.auth.hashers import make_password, check_passowrd, is_password_usable
+from django.contrib.auth.hashers import make_password, check_password, is_password_usable
 from backend.models import Supplier
 
 def render_login(request):
@@ -13,7 +13,7 @@ def render_login(request):
 def login(request):
     email_addr = request_arg(request, "email_addr")
     password = request_arg(request, "password")
-    if email_addr == check_passowrd(password):
+    if email_addr == check_password(password):
         pass
     return Template("login.html")
 
