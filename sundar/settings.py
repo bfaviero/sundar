@@ -75,8 +75,9 @@ TEMPLATE_DIRS = (
 )
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '../media-collected')
-STATIC_ROOT = os.path.join(BASE_DIR, '../static-collected')
+MEDIA_ROOT = os.path.join(BASE_DIR, '')
+STATIC_ROOT = os.path.join(BASE_DIR, '')
+
 
 # List of finder classes that know how to find static files in
 # various locations.
