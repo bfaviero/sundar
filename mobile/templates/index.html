@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load bootstrap_toolkit %}
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
 
     <!-- //TODO: Replace this link with a real action that validates login credentials -->
     <form method="POST" action="product_list.html">
-
+      <div id="csrfmiddlewaretoken" style="display: none;">{{ csrf_token }}</div>
       <table class="table">
         <!-- Use email address as unique user ID instead of username -->
         <tr>
