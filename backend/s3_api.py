@@ -54,7 +54,7 @@ def upload_image(image, supplier_id, item_id):
     bucket_key.set_metadata('Content-Type', 'image/jpeg')
     bucket_key.set_acl('public-read')
     #bucket_key.make_public()
-    url = bucket_key.generate_url(expires_in=None, query_auth=False)
+    url = bucket_key.generate_url(expires_in=0, query_auth=False, force_http=True)
     #k.get_contents_to_filename('download.tar.gz')
     #print 'Upload complete.'
     return url
