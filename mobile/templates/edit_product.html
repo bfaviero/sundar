@@ -59,10 +59,10 @@
         <tr>
           <td><label>Wholesale price</label></td>
           <td><input type="number" size="10" name="wholesale_price" placeholder="0.00" value="{{ item.wholesale_price }}"/>
-              <select id="price_units" name="price_units" style="font-size:1.1em;">
-                <option value="USD_per_yard">USD per yard</option>
-                <option value="USD_per_meter">USD per meter</option>
-                <option value="USD_per_piece">USD per piece</option>
+              <select id="price_units" name="price_units" autocomplete="off" style="font-size:1.1em;">
+                {% for unit, display_unit in wholesale_price_units.items %}
+                  <option value="{{ unit }}" {% if item.wholesale_price_units == unit %}selected="selected"{% endif %}>{{ display_unit }}</option>
+                {% endfor %}
               </select></td>
         </tr>
 
@@ -70,9 +70,10 @@
         <tr>
           <td><label>Fabric width</label></td>
           <td><input type="number" size="10" name="fabric_width" placeholder="0.00" value="{{ item.fabric_width }}"/>
-              <select id="width_units" name="width_units" style="font-size:1.1em;">
-                <option value="cm">centimeters</option>
-                <option value="in">inches</option>
+              <select id="width_units" name="width_units" autocomplete="off" style="font-size:1.1em;">
+                {% for unit, display_unit in fabric_width_units.items %}
+                  <option value="{{ unit }}" {% if item.fabric_width_units == unit %}selected="selected"{% endif %}>{{ display_unit }}</option>
+                {% endfor %}
               </select></td>
         </tr>
 

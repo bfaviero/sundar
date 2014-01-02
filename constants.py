@@ -1,3 +1,11 @@
+WHOLESALE_PRICE_UNITS = {
+    "USD_per_yard": "USD per yard",
+    "USD_per_meter": "USD per meter",
+    "USD_per_piece": "USD per piece",
+}
+
+FABRIC_WITDH_UNITS = {"cm": "centimeters", "in": "inches"}
+
 TEXTILE_TYPES = {
     "Denim": "Denim",
     "Drill": "Drill",

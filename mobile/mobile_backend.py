@@ -6,7 +6,8 @@ from django.contrib.auth.hashers import make_password, check_password, is_passwo
 from backend.models import Supplier, Item
 from backend.item_api import get_items
 from django.forms.models import model_to_dict
-from constants import TEXTILE_TYPES, WEAVE_TYPES
+from constants import TEXTILE_TYPES, WEAVE_TYPES, WHOLESALE_PRICE_UNITS,\
+    FABRIC_WITDH_UNITS
 def render_login(request):
     context = {}
     context.update(csrf(request))
@@ -34,6 +35,8 @@ def render_edit_product(request):
     else:
         item = Item()
     context = {"item": model_to_dict(item),
+               "wholesale_price_units": WHOLESALE_PRICE_UNITS,
+               "fabric_width_units": FABRIC_WITDH_UNITS,
                "textile_types": TEXTILE_TYPES,
                "weave_types": WEAVE_TYPES}
     context.update(csrf(request))
