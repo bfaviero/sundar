@@ -35,7 +35,7 @@ def set_item(request):
     if ora(request, "weave_types"):
         item.weave_types = ora(request, "weave_types")
     #TODO set image url image1_url
-    if request.FILES['image']:
+    if request.FILES.get('image'):
         item = _add_image(request.FILES['image'], supplier_id, item)
     item.save()
     return redirect("/mobile/product_list")
