@@ -32,7 +32,7 @@
 
     <!-- //TODO: Insert a real action here that updates a product or uploads a new one -->
     <form method="POST" enctype="multipart/form-data" name="edit_form" action="/api/set_item">
-      <input id="csrfmiddlewaretoken" style="display: none;" value="{{ csrf_token }}">
+      {% csrf_token %}
       <table class="table table-striped">
       
         <!-- Product name -->
