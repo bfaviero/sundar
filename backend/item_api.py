@@ -15,6 +15,8 @@ def set_item(request):
     item_id = ora(request, "item_id")
     #TODO: supplier = ora(request, "supplier_id")
     supplier_id = ora(request, "supplier_id")
+    if not supplier_id:
+        supplier_id = "TEST"
     if item_id:
         try: 
             item = Item.objects.get(id=item_id)

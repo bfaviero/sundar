@@ -42,11 +42,11 @@ def info():
         for key in bucket:
             print key.name.encode('utf-8')
 
-def upload_image(image, user_id, item_id):
+def upload_image(image, supplier_id, item_id):
     bucket = get_bucket(IMAGES_BUCKET_NAME)
     bucket_key = Key(bucket)
     time_stamp = datetime.now().strftime("%y%m%d_%H%M%S")
-    bucket_key.key = user_id + "." + item_id + "." + time_stamp
+    bucket_key.key = supplier_id + "." + item_id + "." + time_stamp
     #print 'Uploading with bucket key %s to Amazon S3 bucket %s' % (bucket_key.name.encode('utf-8'), IMAGES_BUCKET_NAME)
     #image_stream = StringIO.StringIO(image.read())
     #bucket_key.set_contents_from_file(image_stream)
