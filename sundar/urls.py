@@ -9,10 +9,10 @@ import mobile.urls
 import web.urls
 import backend.s3_api
 
-from mobile.mobile_backend import render_login
+from web.web_backend import login
 
 urlpatterns = patterns('',
-    url(r'^$', render_login),
+    url(r'^$', login),
     url(r'^api/', include(backend.urls)),
     url(r'^mobile/', include(mobile.urls)),
     url(r'^web/', include(web.urls)),
