@@ -2,9 +2,9 @@ from templating import Template, error_page
 from utils import request_arg, optional_request_arg as ora
 from django.http import HttpResponse
 from django.core.context_processors import csrf
-from django.models import Supplier, Item
 from django.shortcuts import redirect
 from s3_api import upload_image
+from models import Supplier, Item
 def get_item(request):
     item_id = request_arg(request, "item_id")
     return Item.objects.get(id=item_id)
