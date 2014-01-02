@@ -8,11 +8,11 @@ from boto.s3.key import Key
 from boto.exception import S3ResponseError
 from boto.s3.connection import S3Connection
 
-AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
-AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
+#AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+#AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 
-conn = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
-
+#conn = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
+conn = boto.connect_s3()
 IMAGES_BUCKET_NAME = 'sundar.io.pictures'
 AUDIO_BUCKET_NAME = 'sundar.io.audio'
 VIDEO_BUCKET_NAME = 'sundar.io.video'
