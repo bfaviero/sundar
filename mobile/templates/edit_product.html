@@ -31,33 +31,33 @@
     <br>
 
     <!-- //TODO: Insert a real action here that updates a product or uploads a new one -->
-    <form method="POST" action="product_list.html">
+    <form method="POST" enctype=multipart/form-data name="edit_form" action="/product_list">
       <table class="table table-striped">
 
         <!-- Product name -->
         <!-- //TODO: Maybe add some code (that's called if you're editing an existing product) to auto-populate the fields with the values currently saved for this product -->
         <tr>
           <td><label>Product name</label></td>
-          <td><input name="productName" type="text" placeholder="Product name"/></td>
+          <td><input name="product_name" type="text" placeholder="Product name"/></td>
         </tr>
 
         <!-- Upload photo -->
         <tr>
           <td><label>Upload photo</label></td>
-          <td><input id="myFileInput" type="file" accept="image/*;capture=camera"></td>
+          <td><input id="image" name="image" type="file" accept="image/*;capture=camera"></td>
         </tr>
 
         <!-- In stock/made to order -->
         <tr>
           <td><label>In stock</label></td>
-          <td><input type="checkbox" id="in_stock">In stock</input></td>
+          <td><input type="checkbox" id="in_stock" name="in_stock"></td>
         </tr>
 
         <!-- Unit price -->
         <tr>
           <td><label>Wholesale price</label></td>
-          <td><input type="number" size="10" name="price" placeholder="0.00" />
-              <select id="price_units" style="font-size:1.1em;">
+          <td><input type="number" size="10" name="wholesale_price" placeholder="0.00" />
+              <select id="price_units" name="price_units" style="font-size:1.1em;">
                 <option value="USD_per_yard">USD per yard</option>
                 <option value="USD_per_meter">USD per meter</option>
                 <option value="USD_per_piece">USD per piece</option>
@@ -67,8 +67,8 @@
         <!-- Width -->
         <tr>
           <td><label>Fabric width</label></td>
-          <td><input type="number" size="10" name="price" placeholder="0.00" />
-              <select id="width" style="font-size:1.1em;">
+          <td><input type="number" size="10" name="fabric_width" placeholder="0.00" />
+              <select id="width_units" name="width_units" style="font-size:1.1em;">
                 <option value="cm">centimeters</option>
                 <option value="in">inches</option>
               </select></td>
@@ -92,7 +92,7 @@
         <!-- Weave type -->
         <tr>
           <td><label>Weave type</label></td>
-          <td><select id="weave_types" style="font-size:1.1em;">
+          <td><select id="weave_types" name="weave_types" style="font-size:1.1em;">
             <option value="BasketMatt">Basket/Matt</option>
             <option value="FourHarnessSatin">Crowfoot/Four Harness Satin</option>
             <option value="EightHarnessSatin">Eight Harness Satin</option>
