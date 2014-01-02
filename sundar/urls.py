@@ -9,10 +9,10 @@ import mobile.urls
 import web.urls
 
 urlpatterns = patterns('',
-    url(r'^$', RedirectView.as_view(url='/web', permanent=False)),
+    #url(r'^$', RedirectView.as_view(url='/web', permanent=False)),
     url(r'^api/', include(backend.urls)),
     url(r'^mobile/', include(mobile.urls)),
-    url(r'^web/', include(web.urls)),
+    url(r'^', include(web.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # Uncomment the next two lines to enable the admin:
