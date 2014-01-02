@@ -28,8 +28,8 @@
       </tr>
       {% for item in items %}
       <tr>
-        <td><a href="/mobile/edit_product.html"><img src="{{ item }}.image1_url" alt="product photograph" width="75" height="75"></a></td>
-        <td><a href="/mobile/edit_product.html"><b>{{ item }}.product_name</b></a></td>
+        <td><a href="/mobile/edit_product.html"><img src="{{ item.image1_url }}" alt="product photograph" width="75" height="75"></a></td>
+        <td><a href="/mobile/edit_product.html"><b>{{ item.product_name }}   </b></a></td>
       </tr>
        {% endfor %}
       <!-- Add new product button -->
