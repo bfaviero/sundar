@@ -39,7 +39,7 @@
         <!-- //TODO: Maybe add some code (that's called if you're editing an existing product) to auto-populate the fields with the values currently saved for this product -->
         <tr>
           <td><label>Product name</label></td>
-          <td><input name="product_name" type="text" placeholder="Product name"/></td>
+          <td><input name="product_name" type="text" placeholder="Product name" text={{ item.name }}/></td>
         </tr>
 
         <!-- Upload photo -->
@@ -51,7 +51,7 @@
         <!-- In stock/made to order -->
         <tr>
           <td><label>In stock</label></td>
-          <td><input type="checkbox" id="in_stock" name="in_stock"></td>
+          <td><input type="checkbox" id="in_stock" name="in_stock" {% if item.in_stock> %} checked="checked"{% endif %}</td>
         </tr>
 
         <!-- Unit price -->

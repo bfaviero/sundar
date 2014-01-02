@@ -1,5 +1,5 @@
 from templating import Template, error_page
-from utils import request_arg, optional_request_arg as ora
+from utils import request_arg, optional_request_arg as ora, optional_string_request_arg as osra
 from django.http import HttpResponse
 from django.core.context_processors import csrf
 from django.shortcuts import redirect
@@ -24,16 +24,16 @@ def set_item(request):
             item = Item()
     else:
         item = Item()
-    item.product_name = ora(request, "product_name")
+    item.product_name = osra(request, "product_name")
     #TODO: item.supplier = Supplier().objects.get(supplier_id)
     if ora(request, "in_stock"): item.in_stock = True
     else: item.in_stock = False
-    item.wholesale_price = "%s %s" % (ora(request, "wholesale_price"), ora(request, "price_units"))
-    item.fabric_width = "%s %s" % (ora(request, "fabric_width"), ora(request, "width_units"))
-    if ora(request, "textile_types"):
-        item.textile_types = ora(request, "textile_types")
-    if ora(request, "weave_types"):
-        item.weave_types = ora(request, "weave_types")
+    item.wholesale_price = osra(request, "wholesale_price")
+    item.wholesale_price_units = osra(request, "price_units")
+    item.fabric_width = osra(request, "fabric_width")
+    item.fabric_width_units = osra(request, "width_units")
+    item.textile_types = osra(request, "textile_types")
+    item.weave_types = osra(request, "weave_types")
     #TODO set image url image1_url
     if request.FILES.get('image'):
         item = _add_image(request.FILES['image'], supplier_id, item)

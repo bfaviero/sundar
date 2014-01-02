@@ -26,6 +26,12 @@ def request_arg(request, arg):
     except KeyError:
         raise BadRequestError("%s argument missing in request" % arg)
 
+def optional_string_request_arg(request, arg):
+    ret = request.REQUEST.get(arg)
+    if not ret:
+        return ""
+    return ret
+
 def optional_request_arg(request, arg):
     ret = request.REQUEST.get(arg)
     if not ret:

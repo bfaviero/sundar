@@ -3,8 +3,9 @@ from django.http import HttpResponse
 from django.core.context_processors import csrf
 from templating import Template, error_page
 from django.contrib.auth.hashers import make_password, check_password, is_password_usable
-from backend.models import Supplier
+from backend.models import Supplier, Item
 from backend.item_api import get_items
+from django.forms.models import model_to_dict
 def render_login(request):
     context = {}
     context.update(csrf(request))
@@ -26,7 +27,9 @@ def sign_up(request):
         Supplier(c_name, email_addr, db_pass)
 
 def render_edit_product(request):
-    context = {}
+    item_id = request_arg(request, "item_id")
+    item = Item.objects.get(id=item_id)
+    context = {"item": model_to_dict(item)}
     context.update(csrf(request))
     return Template("edit_product.html", context)
 
