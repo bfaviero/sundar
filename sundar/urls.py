@@ -1,18 +1,15 @@
 from django.conf.urls import patterns, include, url
-from backend import urls 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from django.views.generic.base import RedirectView
 admin.autodiscover()
 
 import backend.urls
 import mobile.urls
 import web.urls
-import backend.s3_api
-
-from web.web_backend import login
 
 urlpatterns = patterns('',
-    url(r'^$', login),
+    url(r'^$', RedirectView.as_view(url='/web', permanent=False)),
     url(r'^api/', include(backend.urls)),
     url(r'^mobile/', include(mobile.urls)),
     url(r'^web/', include(web.urls)),
