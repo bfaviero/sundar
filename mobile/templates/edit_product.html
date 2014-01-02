@@ -31,9 +31,10 @@
     <br>
 
     <!-- //TODO: Insert a real action here that updates a product or uploads a new one -->
-    <form method="POST" enctype=multipart/form-data name="edit_form" action="/product_list">
+    <form method="POST" enctype="multipart/form-data" name="edit_form" action="/product_list">
+      <input id="csrfmiddlewaretoken" style="display: none;" value="{{ csrf_token }}">
       <table class="table table-striped">
-
+      
         <!-- Product name -->
         <!-- //TODO: Maybe add some code (that's called if you're editing an existing product) to auto-populate the fields with the values currently saved for this product -->
         <tr>
