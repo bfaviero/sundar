@@ -57,7 +57,7 @@
         <!-- Unit price -->
         <tr>
           <td><label>Wholesale price</label></td>
-          <td><input type="number" size="10" name="wholesale_price" placeholder="0.00" />
+          <td><input type="number" size="10" name="wholesale_price" placeholder="0.00" value="{{ item.wholesale_price }}"/>
               <select id="price_units" name="price_units" style="font-size:1.1em;">
                 <option value="USD_per_yard">USD per yard</option>
                 <option value="USD_per_meter">USD per meter</option>
@@ -68,7 +68,7 @@
         <!-- Width -->
         <tr>
           <td><label>Fabric width</label></td>
-          <td><input type="number" size="10" name="fabric_width" placeholder="0.00" />
+          <td><input type="number" size="10" name="fabric_width" placeholder="0.00" value="{{ item.fabric_width }}"/>
               <select id="width_units" name="width_units" style="font-size:1.1em;">
                 <option value="cm">centimeters</option>
                 <option value="in">inches</option>
@@ -78,8 +78,8 @@
         <!-- Material type -->
         <tr>
           <td><label>Textile type</label></td>
-          <td><select id="textile_types" style="font-size:1.1em;">
-            <option value="Denim">Denim</option>
+          <td><select id="textile_type" style="font-size:1.1em;">
+            <option value="Denim" {% if item.textile_types == "Denim" %}selcted="selected"{% endif %}>Denim</option>
             <option value="Drill">Drill</option>
             <option value="Garbadine">Garbadine</option>
             <option value="Pile">Pile</option>
@@ -93,7 +93,7 @@
         <!-- Weave type -->
         <tr>
           <td><label>Weave type</label></td>
-          <td><select id="weave_types" name="weave_types" style="font-size:1.1em;">
+          <td><select id="weave_type" name="weave_types" style="font-size:1.1em;">
             <option value="BasketMatt">Basket/Matt</option>
             <option value="FourHarnessSatin">Crowfoot/Four Harness Satin</option>
             <option value="EightHarnessSatin">Eight Harness Satin</option>

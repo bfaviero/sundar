@@ -32,8 +32,8 @@ def set_item(request):
     item.wholesale_price_units = osra(request, "price_units")
     item.fabric_width = osra(request, "fabric_width")
     item.fabric_width_units = osra(request, "width_units")
-    item.textile_types = osra(request, "textile_types")
-    item.weave_types = osra(request, "weave_types")
+    item.textile_type = osra(request, "textile_types")
+    item.weave_type = osra(request, "weave_types")
     #TODO set image url image1_url
     if request.FILES.get('image'):
         item = _add_image(request.FILES['image'], supplier_id, item)
