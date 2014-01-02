@@ -26,7 +26,9 @@ def sign_up(request):
         Supplier(c_name, email_addr, db_pass)
 
 def render_edit_product(request):
-    return Template("edit_product.html")
+    context = {}
+    context.update(csrf(request))
+    return Template("edit_product.html", context)
 
 def render_product_list(request):
     context = {}
@@ -34,10 +36,16 @@ def render_product_list(request):
     return Template("product_list.html", context)
 
 def render_sign_up(request):
-    return Template("signup.html")
+    context = {}
+    context.update(csrf(request))
+    return Template("signup.html", context)
 
 def example(request):
-    return Template("Example.html")
+    context = {}
+    context.update(csrf(request))
+    return Template("Example.html", context)
 
 def camera(request):
-    return Template("Camera.html")
+    context = {}
+    context.update(csrf(request))
+    return Template("Camera.html", context)
