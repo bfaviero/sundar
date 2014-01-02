@@ -14,7 +14,7 @@ def set_item(request):
     item = None
     item_id = ora(request, "item_id")
     #TODO: supplier = ora(request, "supplier_id")
-    supplier_id = "007"
+    supplier_id = ora(request, "supplier_id")
     if item_id:
         try: 
             item = Item.objects.get(id=item_id)
@@ -23,7 +23,7 @@ def set_item(request):
     else:
         item = Item()
     item.product_name = ora(request, "product_name")
-    item.supplier = supplier_id
+    #TODO: item.supplier = Supplier().objects.get(supplier_id)
     if ora(request, "in_stock"): item.in_stock = True
     else: item.in_stock = False
     item.wholesale_price = "%s %s" % (ora(request, "wholesale_price"), ora(request, "price_units"))
