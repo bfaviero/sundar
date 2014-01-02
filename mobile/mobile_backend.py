@@ -27,8 +27,11 @@ def sign_up(request):
         Supplier(c_name, email_addr, db_pass)
 
 def render_edit_product(request):
-    item_id = request_arg(request, "item_id")
-    item = Item.objects.get(id=item_id)
+    item_id = optional_request_arg(request, "item_id")
+    if item_id:
+        item = Item.objects.get(id=item_id)
+    else:
+        item = Item()
     context = {"item": model_to_dict(item)}
     context.update(csrf(request))
     return Template("edit_product.html", context)
