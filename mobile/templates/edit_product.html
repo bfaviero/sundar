@@ -79,9 +79,9 @@
         <!-- Material type -->
         <tr>
           <td><label>Textile type</label></td>
-          <td><select id="textile_type" style="font-size:1.1em;">
+          <td><select id="textile_type" name="textile_type" style="font-size:1.1em;">
             {% for type in textile_types %}
-              <option value="{{ type }}" {% if item.textile_types == type %}selcted="selected"{% endif %}>{{ type }}</option>
+              <option value="{{ type }}" {% if item.textile_type == type %}selcted="selected"{% endif %}>{{ type }}</option>
             {% endfor %}
           </select></td>
         </tr>
@@ -89,7 +89,7 @@
         <!-- Weave type -->
         <tr>
           <td><label>Weave type</label></td>
-          <td><select id="weave_type" name="weave_types" style="font-size:1.1em;">
+          <td><select id="weave_type" name="weave_type" style="font-size:1.1em;">
             <option value="BasketMatt">Basket/Matt</option>
             <option value="FourHarnessSatin">Crowfoot/Four Harness Satin</option>
             <option value="EightHarnessSatin">Eight Harness Satin</option>
