@@ -4,7 +4,7 @@ from django.core.context_processors import csrf
 from templating import Template, error_page
 from django.contrib.auth.hashers import make_password, check_password, is_password_usable
 from backend.models import Supplier
-
+from backend.item_api import get_items
 def render_login(request):
     context = {}
     context.update(csrf(request))
@@ -31,7 +31,7 @@ def render_edit_product(request):
     return Template("edit_product.html", context)
 
 def render_product_list(request):
-    context = {}
+    context = {"items": get_items()}
     #context.update(csrf(request))
     return Template("product_list.html", context)
 
