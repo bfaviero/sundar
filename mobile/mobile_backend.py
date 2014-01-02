@@ -31,7 +31,7 @@ def render_edit_product(request):
     return Template("edit_product.html", context)
 
 def render_product_list(request):
-    context = {"items": get_items()}
+    context = {"items": get_items(request)}
     #context.update(csrf(request))
     return Template("product_list.html", context)
 
