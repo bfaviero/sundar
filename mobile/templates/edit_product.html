@@ -79,14 +79,9 @@
         <tr>
           <td><label>Textile type</label></td>
           <td><select id="textile_type" style="font-size:1.1em;">
-            <option value="Denim" {% if item.textile_types == "Denim" %}selcted="selected"{% endif %}>Denim</option>
-            <option value="Drill">Drill</option>
-            <option value="Garbadine">Garbadine</option>
-            <option value="Pile">Pile</option>
-            <option value="Plush">Plush</option>
-            <option value="Satin">Satin</option>
-            <option value="Serge">Serge</option>
-            <option value="Terry">Terry</option>
+            {% for type in textile_types %}
+              <option value="{{ type }}" {% if item.textile_types == type %}selcted="selected"{% endif %}>{{ type }}</option>
+            {% endfor %}
           </select></td>
         </tr>
 

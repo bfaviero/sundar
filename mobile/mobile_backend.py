@@ -6,6 +6,7 @@ from django.contrib.auth.hashers import make_password, check_password, is_passwo
 from backend.models import Supplier, Item
 from backend.item_api import get_items
 from django.forms.models import model_to_dict
+from constants import TEXTILE_TYPES
 def render_login(request):
     context = {}
     context.update(csrf(request))
@@ -32,7 +33,8 @@ def render_edit_product(request):
         item = Item.objects.get(id=item_id)
     else:
         item = Item()
-    context = {"item": model_to_dict(item)}
+    context = {"item": model_to_dict(item),
+               "textile_types": TEXTILE_TYPES}
     context.update(csrf(request))
     return Template("edit_product.html", context)
 

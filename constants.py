@@ -1,0 +1,1 @@
+TEXTILE_TYPES = ["Denim", "Drill", "Garbadine", "Pile", "Plush", "Satin", "Serge", "Terry"]
