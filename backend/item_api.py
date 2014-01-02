@@ -30,8 +30,10 @@ def set_item(request):
     else: item.in_stock = False
     item.wholesale_price = "%s %s" % (ora(request, "wholesale_price"), ora(request, "price_units"))
     item.fabric_width = "%s %s" % (ora(request, "fabric_width"), ora(request, "width_units"))
-    item.textile_types = ora(request, "textile_types")
-    item.weave_types = ora(request, "weave_types")
+    if ora(request, "textile_types"):
+        item.textile_types = ora(request, "textile_types")
+    if ora(request, "weave_types"):
+        item.weave_types = ora(request, "weave_types")
     #TODO set image url image1_url
     if request.FILES['image']:
         item = _add_image(request.FILES['image'], supplier_id, item)
