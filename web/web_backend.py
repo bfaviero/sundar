@@ -4,7 +4,7 @@ from django.core.context_processors import csrf
 from templating import Template, error_page
 from django.shortcuts import redirect
 from backend.item_api import get_items
-from itertools import iter, izip_longest
+from itertools import izip_longest
 
 def login(request):
     context = {}
