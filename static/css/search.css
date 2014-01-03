@@ -1,0 +1,21 @@
+.ui-block-a,
+.ui-block-b,
+.ui-block-c
+{
+    font-family: "Trebuchet MS";
+    text-align: center;
+    left-padding: 30px;
+}
+
+.ui-grid-b > .ui-block-a > .ui-link,
+.ui-grid-b > .ui-block-b > .ui-link,
+.ui-grid-b > .ui-block-c > .ui-link
+{
+    color: white !important;
+    font-weight:normal;
+}
+
+
+#botton_msg {
+    align: center;
+}
