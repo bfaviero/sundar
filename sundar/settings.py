@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'mobile',
     'sundar',
     'web',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
