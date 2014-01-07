@@ -43,6 +43,7 @@ def set_item(request):
     item.weight = osra(request, "weight")
     item.weight_units = osra(request, "weight_units")
     item.color = osra(request, "color")
+    item.country_origin = osra(request, "country_origin")
     #TODO set image url image1_url
     if request.FILES.get('image'):
         item = _add_image(request.FILES['image'], supplier_id, item)
