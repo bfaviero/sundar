@@ -47,6 +47,7 @@ class Item(models.Model):
     weave_type = models.CharField(max_length=32, default="", blank=True)
     description = models.CharField(max_length=512, default="", blank=True)
     weight = models.CharField(max_length=32, default="", blank=True)
+    weight_units = models.CharField(max_length=32, default="", blank=True)
     color = models.CharField(max_length=32, default="", blank=True)
     dying = models.CharField(max_length=32, default="", blank=True)
     color_fast_testing = models.CharField(max_length=32, default="", blank=True)

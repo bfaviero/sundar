@@ -4,7 +4,10 @@ WHOLESALE_PRICE_UNITS = {
     "USD_per_piece": "USD per piece",
 }
 
-FABRIC_WITDH_UNITS = {"cm": "centimeters", "in": "inches"}
+FABRIC_WITDH_UNITS = {
+    "cm": "centimeters",
+    "in": "inches"
+}
 
 BASIC_MATERIAL_TYPES = {
     "Knit": "Knit",
@@ -27,17 +30,24 @@ TEXTILE_TYPES = {
 }
 
 WEAVE_TYPES = {
+    "NA": "N/A",
+    "Plain": "Plain",
     "BasketMatt": "Basket/Matt",
-    "FourHarnessSatin": "Crowfoot/Four Harness Satin",
-    "EightHarnessSatin": "Eight Harness Satin",
-    "Jacquard": "Jacquard",
-    "Knit": "Knit",
     "Lano": "Lano",
     "MockLano": "Mock Lano",
-    "Plain": "Plain",
+    "FourHarnessSatin": "Crowfoot/Four Harness Satin",
+    "EightHarnessSatin": "Eight Harness Satin",
+    "Twill": "Twill",
     "Rib": "Rib",
     "Sateen": "Sateen",
     "TricotKnit": "Tricot Knit",
-    "Twill": "Twill",
-    "NA": "N/A",
+    "Jacquard": "Jacquard",
+    "Knit": "Knit",
+}
+
+FABRIC_WEIGHT_UNITS = {
+    "gsm": "gsm",
+    "g_per_yd": "grams per yard",
+    "oz_per_yd": "ounces per yard",
+    "oz_per_m": "ounces per meter",
 }

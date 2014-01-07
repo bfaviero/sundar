@@ -7,7 +7,7 @@ from backend.models import Supplier, Item
 from backend.item_api import get_items
 from django.forms.models import model_to_dict
 from constants import TEXTILE_TYPES, WEAVE_TYPES, WHOLESALE_PRICE_UNITS,\
-    FABRIC_WITDH_UNITS, BASIC_MATERIAL_TYPES
+    FABRIC_WITDH_UNITS, BASIC_MATERIAL_TYPES, FABRIC_WEIGHT_UNITS
 
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 
@@ -43,7 +43,8 @@ def render_edit_product(request):
                "fabric_width_units": FABRIC_WITDH_UNITS,
                "basic_material_types": BASIC_MATERIAL_TYPES,
                "textile_types": TEXTILE_TYPES,
-               "weave_types": WEAVE_TYPES}
+               "weave_types": WEAVE_TYPES,
+               "fabric_weight_units": FABRIC_WEIGHT_UNITS}
     context.update(csrf(request))
     return Template("edit_product.html", context)
 
