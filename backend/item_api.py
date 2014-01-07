@@ -32,8 +32,10 @@ def set_item(request):
     else: item.in_stock = False
     item.wholesale_price = osra(request, "wholesale_price")
     item.wholesale_price_units = osra(request, "price_units")
+    item.volume_discount = osra(request, "volume_discount")
     item.fabric_width = osra(request, "fabric_width")
     item.fabric_width_units = osra(request, "width_units")
+    item.material_type = osra(request, "material_type")
     item.textile_type = osra(request, "textile_type")
     item.weave_type = osra(request, "weave_type")
     #TODO set image url image1_url

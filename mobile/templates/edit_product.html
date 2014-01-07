@@ -55,7 +55,7 @@
           <td><input type="checkbox" id="in_stock" name="in_stock" {% if item.in_stock %} checked="checked"{% endif %}></td>
         </tr>
 
-        <!-- Unit price -->
+        <!-- Wholesale price -->
         <tr>
           <td><label>Wholesale price</label></td>
           <td><input type="tel" size="10" name="wholesale_price" placeholder="0.00" value="{{ item.wholesale_price }}"/>
@@ -65,8 +65,14 @@
                 {% endfor %}
               </select></td>
         </tr>
+        
+        <!-- Volume discount -->
+        <tr>
+          <td><label>Volume discount</label></td>
+          <td><input name="volume_discount" type="text" size="32" placeholder="Volume discount" value="{{ item.volume_discount }}"/></td>
+        </tr>
 
-        <!-- Width -->
+        <!-- Fabric width -->
         <tr>
           <td><label>Fabric width</label></td>
           <td><input type="tel" size="10" name="fabric_width" placeholder="0.00" value="{{ item.fabric_width }}"/>
@@ -75,6 +81,16 @@
                   <option value="{{ unit }}" {% if item.fabric_width_units == unit %}selected="selected"{% endif %}>{{ display_unit }}</option>
                 {% endfor %}
               </select></td>
+        </tr>
+
+        <!-- Basic material type -->
+        <tr>
+          <td><label>Basic material type</label></td>
+          <td><select id="material_type" name="material_type" autocomplete="off" style="font-size:1.1em;">
+            {% for type, display_type in basic_material_types.items %}
+              <option value="{{ type }}" {% if item.material_type == type %}selected="selected"{% endif %}>{{ display_type }}</option>
+            {% endfor %}
+          </select></td>
         </tr>
 
         <!-- Material type -->

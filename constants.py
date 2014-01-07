@@ -6,6 +6,15 @@ WHOLESALE_PRICE_UNITS = {
 
 FABRIC_WITDH_UNITS = {"cm": "centimeters", "in": "inches"}
 
+BASIC_MATERIAL_TYPES = {
+    "Knit": "Knit",
+    "Woven": "Woven",
+    "NonWoven": "Non-Woven",
+    "LeatherSuede": "Leather & Suede",
+    "Trims": "Trims",
+    "Accessories": "Accessories",
+}
+
 TEXTILE_TYPES = {
     "Denim": "Denim",
     "Drill": "Drill",

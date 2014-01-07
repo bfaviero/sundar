@@ -41,6 +41,7 @@ def render_edit_product(request):
     context = {"item": model_to_dict(item),
                "wholesale_price_units": WHOLESALE_PRICE_UNITS,
                "fabric_width_units": FABRIC_WITDH_UNITS,
+               "basic_material_types": BASIC_MATERIAL_TYPES,
                "textile_types": TEXTILE_TYPES,
                "weave_types": WEAVE_TYPES}
     context.update(csrf(request))
