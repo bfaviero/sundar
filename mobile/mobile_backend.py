@@ -46,7 +46,6 @@ def render_edit_product(request):
     context.update(csrf(request))
     return Template("edit_product.html", context)
 
-@user_logged_in
 def render_product_list(request):
     context = {"items": get_items(request)}
     #context.update(csrf(request))

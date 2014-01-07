@@ -22,7 +22,7 @@ def create_supplier(request):
             new_supp.email_addr = request_arg(request, "email_addr")
             new_supp.company_name = request_arg(request, "company_name")
             new_supp.save()
-            user_logged_in.send(sender=Supplier,request=request,user=new_supp)
+            #sig = user_logged_in.send(sender=Supplier,request=request,user=new_supp)
             return redirect("/mobile/product_list")
     return HttpResponse("Error: Passwords do not match.")
 
@@ -39,6 +39,6 @@ def login_supplier(request):
     password = request_arg(request, "password")
     user = Supplier.objects.get(email_addr=email_addr)
     if user.password == check_password(password):
-        user_logged_in.send(sender=Supplier,request=request,user=user)
+        # sig = user_logged_in.send(sender=Supplier,request=request,user=user)
         return redirect("/mobile/product_list")
     return redirect("/mobile/sign_up")
