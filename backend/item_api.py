@@ -27,6 +27,7 @@ def set_item(request):
     else:
         item = Item()
     item.product_name = osra(request, "product_name")
+    item.product_code = osra(request, "product_code")
     #TODO: item.supplier = Supplier().objects.get(supplier_id)
     if ora(request, "in_stock"): item.in_stock = True
     else: item.in_stock = False
