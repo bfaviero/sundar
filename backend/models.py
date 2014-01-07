@@ -13,6 +13,15 @@ class Supplier(models.Model):
     time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now=True)
     company_name = models.CharField(db_index=True, max_length=128, default="", blank=True)
+    is_staff = models.BooleanField(default=False)
+
+class Designer(models.Model):
+    """designer description"""
+    #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
+    email_addr = models.EmailField(max_length=255)
+    password = models.CharField(max_length=255)    
+    time_created = models.DateTimeField(auto_now_add=True)
+    last_logged_in = models.DateTimeField(auto_now=True)
 
 class Item(models.Model):
     """supplier items"""
@@ -46,14 +55,6 @@ class Item(models.Model):
     cost = models.CharField(max_length=32, default="", blank=True)
     time_updated = models.DateTimeField(auto_now=True)
     time_created = models.DateTimeField(auto_now_add=True)
-
-class Designer(models.Model):
-    """designer description"""
-    #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
-    email_addr = models.EmailField(max_length=255)
-    password = models.CharField(max_length=255)    
-    time_created = models.DateTimeField(auto_now_add=True)
-    last_logged_in = models.DateTimeField(auto_now=True)
 
 
 class PhotoUrl(models.Model):

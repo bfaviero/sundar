@@ -8,6 +8,10 @@ from backend.item_api import get_items
 from django.forms.models import model_to_dict
 from constants import TEXTILE_TYPES, WEAVE_TYPES, WHOLESALE_PRICE_UNITS,\
     FABRIC_WITDH_UNITS
+
+from django.contrib.auth.signals import user_logged_in, user_logged_out
+
+
 def render_login(request):
     context = {}
     context.update(csrf(request))
@@ -42,6 +46,7 @@ def render_edit_product(request):
     context.update(csrf(request))
     return Template("edit_product.html", context)
 
+@user_logged_in
 def render_product_list(request):
     context = {"items": get_items(request)}
     #context.update(csrf(request))

@@ -16,13 +16,13 @@
     <h3>Create an account as a Sundar supplier</h3>
 
     <!-- //TODO: Replace this action with a real action that creates an account -->
-    <form id="signup_form" action="/mobile/product_list">
+    <form id="signup_form" action="/mobile/sign_up">
       {% csrf_token %}
       <table class="table">
         <!-- Username --> 
         <tr>
           <td><label>Company Name</label></td>
-          <td><input name="supplier_name" type="text" placeholder="Company Name"/></td>
+          <td><input name="company_name" type="text" placeholder="Company Name"/></td>
         </tr>
 
         <!-- Email address -->
