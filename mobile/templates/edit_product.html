@@ -111,11 +111,7 @@
         <!-- Textile type -->
         <tr>
           <td><label>Textile type</label></td>
-          <td><select id="textile_type" name="textile_type" autocomplete="off" style="font-size:1.1em;">
-            {% for type, display_type in textile_types.items %}
-              <option value="{{ type }}" {% if item.textile_type == type %}selected="selected"{% endif %}>{{ display_type }}</option>
-            {% endfor %}
-          </select></td>
+          <td><input name="textile_type" type="text" size="50" placeholder="Textile type" value="{{ item.textile_type }}"/></td>
         </tr>
 
         <!-- Weave type -->
