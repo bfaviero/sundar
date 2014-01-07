@@ -46,8 +46,10 @@ def set_item(request):
     item.color = osra(request, "color")
     item.country_origin = osra(request, "country_origin")
     #TODO set image url image1_url
-    if request.FILES.get('image'):
-        item = _add_image(request.FILES['image'], supplier_id, item)
+    if request.FILES.get('image1'):
+        item = _add_image(request.FILES['image1'], supplier_id, item)
+    if request.FILES.get('image2'):
+        item = _add_image(request.FILES['image2'], supplier_id, item)
     item.save()
     return redirect("/mobile/product_list")
 
