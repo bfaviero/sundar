@@ -50,6 +50,10 @@ def set_item(request):
         item = _add_image(request.FILES['image1'], supplier_id, item)
     if request.FILES.get('image2'):
         item = _add_image(request.FILES['image2'], supplier_id, item)
+    if request.FILES.get('image3'):
+        item = _add_image(request.FILES['image3'], supplier_id, item)
+    if request.FILES.get('image4'):
+        item = _add_image(request.FILES['image4'], supplier_id, item)
     item.save()
     return redirect("/mobile/product_list")
 
