@@ -26,11 +26,9 @@ def create_supplier(request):
             return redirect("/mobile/product_list")
     return HttpResponse("Error: Passwords do not match.")
 
-@user_logged_in
 def update_supplier(request):
     return HttpResponse("SUCCESS update_supplier ")
 
-@user_logged_in
 def delete_supplier(request):
     return HttpResponse("SUCCESS delete_supplier ")
 
