@@ -5,7 +5,7 @@ from django.core.context_processors import csrf
 from django.shortcuts import redirect
 from s3_api import upload_image
 from models import Supplier, Item
-from django.contrib.auth.signals import user_loggin_in, user_logged_out
+from django.contrib.auth.signals import user_logged_in, user_logged_out
 
 def get_item(request):
     item_id = request_arg(request, "item_id")
