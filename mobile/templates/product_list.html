@@ -18,17 +18,9 @@
 
     <table class="table table-striped">
 
-      <!-- One row for each product -->
-      <!-- //TODO: replace the "href='edit_product.html'" with some kind of action that takes you to the edit product page with this product loaded (maybe an HTTP GET parameter that includes the product's ID -->
-      <!-- //TODO: wrap this table row in some kind of for/while/etc. loop, so there is one row for each product the user has uploaded -->
-      <!-- //TODO: replace the stock photo ("fabric_image.png") with a photo specifically belonging to this product, and replace the "Super awesome fabric" text with whatever product name is attached to this product -->
-      <tr>
-        <td><a href="/mobile/edit_product"><img src="/static/fabric_image.png" alt="product photograph" width="75" height="75"></a></td>
-        <td><a href="/mobile/edit_product"><b>Super awesome fabric</b></a></td>
-      </tr>
       {% for item in items %}
         <tr>
-          <td><a href="/mobile/edit_product?item_id={{ item.id }}"><img src="{{ item.image1_url }}" alt="product photograph" width="75" height="75"></a></td>
+          <td><a href="/mobile/edit_product?item_id={{ item.id }}"><img src="{{ item.image2_url }}" alt="product photograph" width="75" height="75"></a></td>
           <td><a href="/mobile/edit_product?item_id={{ item.id }}"><b>{{ item.product_name }}   </b></a></td>
         </tr>
       {% endfor %}
