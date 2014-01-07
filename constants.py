@@ -54,6 +54,6 @@ WEAVE_TYPES = {
 FABRIC_WEIGHT_UNITS = {
     "gsm": "gsm",
     "g_per_yd": "grams per yard",
-    "oz_per_yd": "ounces per yard",
-    "oz_per_m": "ounces per meter",
+    "oz_per_yd": "oz per yard",
+    "oz_per_m": "oz per meter",
 }
