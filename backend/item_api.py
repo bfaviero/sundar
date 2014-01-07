@@ -36,6 +36,7 @@ def set_item(request):
     item.fabric_width = osra(request, "fabric_width")
     item.fabric_width_units = osra(request, "width_units")
     item.material_type = osra(request, "material_type")
+    item.fiber_type = osra(request, "fiber_type")
     item.textile_type = osra(request, "textile_type")
     item.weave_type = osra(request, "weave_type")
     item.weight = osra(request, "weight")

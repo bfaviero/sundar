@@ -29,6 +29,12 @@ TEXTILE_TYPES = {
     "Terry": "Terry",
 }
 
+FIBER_TYPES = {
+    "Natural": "Natural",
+    "Synthetic": "Synthetic",
+    "Both": "Both"
+}
+
 WEAVE_TYPES = {
     "NA": "N/A",
     "Plain": "Plain",

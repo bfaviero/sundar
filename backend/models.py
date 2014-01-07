@@ -38,7 +38,7 @@ class Item(models.Model):
     lead_time = models.CharField(max_length=32, default="", blank=True)
     wholesale_price = models.CharField(max_length=32, default="", blank=True)
     wholesale_price_units = models.CharField(max_length=32, default="", blank=True)
-    volume_discount = models.CharField(max_length=32, default="", blank=True)
+    volume_discount = models.CharField(max_length=512, default="", blank=True)
     fabric_width = models.CharField(max_length=32, default="", blank=True)
     fabric_width_units = models.CharField(max_length=32, default="", blank=True)
     material_type = models.CharField(max_length=32, default="", blank=True)
