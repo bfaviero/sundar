@@ -31,6 +31,7 @@ def set_item(request):
     #TODO: item.supplier = Supplier().objects.get(supplier_id)
     if ora(request, "in_stock"): item.in_stock = True
     else: item.in_stock = False
+    item.lead_time = osra(request, "lead_time")
     item.wholesale_price = osra(request, "wholesale_price")
     item.wholesale_price_units = osra(request, "price_units")
     item.volume_discount = osra(request, "volume_discount")
