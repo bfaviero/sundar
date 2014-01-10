@@ -13,16 +13,12 @@ from django.contrib.auth import authenticate, login
 def create_supplier(request):
     password = request_arg(request, "password")
     if password != "" and password == request_arg(request, "confirm_password"):
-        password_candidate = make_password(password)
-        if not is_password_usable(password_candidate):
-            return HttpResponse("Password cannot be empty.")
-        else: 
-            new_supp = Supplier()
-            new_supp.set_password(password_candidate)
-            new_supp.email_addr = request_arg(request, "email_addr")
-            new_supp.company_name = request_arg(request, "company_name")
-            new_supp.save()
-            return redirect("/mobile/")
+        new_supp = Supplier()
+        new_supp.set_password(password)
+        new_supp.email_addr = request_arg(request, "email_addr")
+        new_supp.company_name = request_arg(request, "company_name")
+        new_supp.save()
+        return redirect("/mobile/")
     return HttpResponse("Error: Passwords do not match.")
 
 def update_supplier(request):
