@@ -7,14 +7,14 @@ from datetime import datetime
 
 class CustomUser(AbstractBaseUser):
     """base User model"""
-    email_addr = models.EmailField(max_length=256, unique=True, db_index=True)
+    email_addr = models.EmailField(max_length=255, unique=True, db_index=True)
     time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now=True)
     USERNAME_FIELD = 'email_addr'
   
 class Supplier(CustomUser):
     """Supplier description"""
-    company_name = models.CharField(db_index=True, max_length=256, default="", blank=True)
+    company_name = models.CharField(db_index=True, max_length=255, default="", blank=True)
     is_staff = models.BooleanField(default=False)
     CustomUser.REQUIRED_FIELDS += ['company_name']
 
@@ -25,11 +25,11 @@ class Designer(CustomUser):
 class Item(models.Model):
     """supplier items"""
     supplier = models.ForeignKey(Supplier)
-    image1_url = models.CharField(max_length=256, default="", blank=True)
-    image2_url = models.CharField(max_length=256, default="", blank=True)
-    image3_url = models.CharField(max_length=256, default="", blank=True)
-    image4_url = models.CharField(max_length=256, default="", blank=True)
-    image5_url = models.CharField(max_length=256, default="", blank=True)
+    image1_url = models.CharField(max_length=255, default="", blank=True)
+    image2_url = models.CharField(max_length=255, default="", blank=True)
+    image3_url = models.CharField(max_length=255, default="", blank=True)
+    image4_url = models.CharField(max_length=255, default="", blank=True)
+    image5_url = models.CharField(max_length=255, default="", blank=True)
     product_name = models.CharField(max_length=128, default="", blank=True)
     product_code = models.CharField(max_length=128, default="", blank=True)
     in_stock = models.BooleanField(default="", blank=True)
