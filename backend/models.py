@@ -5,6 +5,24 @@ from django.contrib.auth.models import User, AbstractBaseUser
 from django import forms
 from datetime import datetime
 
+class CustomBackend:
+    #This must be called before login(request, user) 
+    def authenticate(self, email_addr=None, password=None):
+        try:
+            user = CustomUser.objects.get(email_addr=email_addr)
+            if password == user.password:
+                return user
+            else:
+                return None
+        except User.DoesNotExist:
+            return None
+    # Required
+    def get_user(self, user_id):
+        try:
+            return CustomUser.objects.get(pk=user_id)
+        except User.DoesNotExist:
+            return None
+
 class CustomUser(AbstractBaseUser):
     """base User model"""
     """inherited fields: id, password, last_login"""
