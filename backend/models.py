@@ -8,11 +8,9 @@ from datetime import datetime
 class CustomUser(AbstractBaseUser):
     """base User model"""
     email_addr = models.EmailField(max_length=256, unique=True, db_index=True)
-    password = models.CharField(max_length=512)
     time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now=True)
     USERNAME_FIELD = 'email_addr'
-    REQUIRED_FIELDS = ['password']
   
 class Supplier(CustomUser):
     """Supplier description"""
