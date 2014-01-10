@@ -18,7 +18,7 @@ def create_supplier(request):
             return HttpResponse("Password cannot be empty.")
         else: 
             new_supp = Supplier()
-            new_supp.password = password_candidate
+            new_supp.set_password(password_candidate)
             new_supp.email_addr = request_arg(request, "email_addr")
             new_supp.company_name = request_arg(request, "company_name")
             new_supp.save()

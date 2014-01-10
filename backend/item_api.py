@@ -72,6 +72,6 @@ def delete_item(request):
 def get_items(request):
     #TODO: uncomment after account functionality built; current return is for demo
     #sup = Supplier.objects.get(id=request_arg(request, "supplier_id"))
-    #return Item.objects.all(supplier=sup)
-    return Item.objects.all(supplier=request.user) 
+    #return Item.objects.all()
+    return Item.objects.filter(supplier=request.user) 
  
