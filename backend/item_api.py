@@ -25,8 +25,7 @@ def set_item(request):
         item = Item()
     item.product_name = osra(request, "product_name")
     item.product_code = osra(request, "product_code")
-    print request.user
-    item.supplier = Supplier().objects.get(email_addr=request.user.email_addr)
+    item.supplier = Supplier.objects.get(email_addr=request.user.email_addr)
     if ora(request, "in_stock"): item.in_stock = True
     else: item.in_stock = False
     item.lead_time = osra(request, "lead_time")
