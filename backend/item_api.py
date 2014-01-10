@@ -16,9 +16,6 @@ def set_item(request):
     item = None
     item_id = ora(request, "item_id")
     #TODO: supplier = ora(request, "supplier_id")
-    supplier_id = ora(request, "supplier_id")
-    if not supplier_id:
-        supplier_id = "TEST"
     if item_id:
         try: 
             item = Item.objects.get(id=item_id)
@@ -28,7 +25,7 @@ def set_item(request):
         item = Item()
     item.product_name = osra(request, "product_name")
     item.product_code = osra(request, "product_code")
-    #TODO: item.supplier = Supplier().objects.get(supplier_id)
+    item.supplier = request.user
     if ora(request, "in_stock"): item.in_stock = True
     else: item.in_stock = False
     item.lead_time = osra(request, "lead_time")
