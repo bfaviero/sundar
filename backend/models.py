@@ -4,13 +4,14 @@ from decimal import Decimal
 from django.contrib.auth.models import User, AbstractBaseUser
 from django import forms
 from datetime import datetime
+from django.contrib.auth.hashers import make_password, check_password, is_password_usable
 
 class CustomBackend:
     #This must be called before login(request, user) 
     def authenticate(self, email_addr=None, password=None):
         try:
             user = CustomUser.objects.get(email_addr=email_addr)
-            if password == user.password:
+            if user.check_password(password):
                 return user
             else:
                 return None
