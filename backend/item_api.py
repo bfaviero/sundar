@@ -50,7 +50,7 @@ def _add_image(image, supplier_id, item):
     elif not item.image4_url: item.image4_url = url
     elif not item.image5_url: item.image5_url = url
     return item
- 
+
 def delete_item(request):
     return HttpResponse("SUCCESS DELETE ITEM")
 
@@ -58,5 +58,5 @@ def get_items(request):
     #TODO: uncomment after account functionality built; current return is for demo
     #sup = Supplier.objects.get(id=request_arg(request, "supplier_id"))
     #return Item.objects.all(supplier=sup)
-    return Item.objects.all() 
+    return Item.objects.all(supp=request.user) 
  

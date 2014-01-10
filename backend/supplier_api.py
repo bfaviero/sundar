@@ -22,7 +22,7 @@ def create_supplier(request):
             new_supp.email_addr = request_arg(request, "email_addr")
             new_supp.company_name = request_arg(request, "company_name")
             new_supp.save()
-            #sig = user_logged_in.send(sender=Supplier,request=request,user=new_supp)
+            user_logged_in.send(sender=Supplier,request=request,user=new_supp)
             return redirect("/mobile/product_list")
     return HttpResponse("Error: Passwords do not match.")
 

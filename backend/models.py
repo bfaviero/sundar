@@ -5,23 +5,27 @@ from django.contrib.auth.models import User
 from django import forms
 from datetime import datetime
 
-class Supplier(models.Model):
+class Supplier(models.AbstractBaseUser):
     """supplier description"""
     #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
-    email_addr = models.EmailField(max_length=255)
+    email_addr = models.EmailField(max_length=255, unique=True, db_index=True)
     password = models.CharField(max_length=512)    
     time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now=True)
     company_name = models.CharField(db_index=True, max_length=128, default="", blank=True)
     is_staff = models.BooleanField(default=False)
-
-class Designer(models.Model):
+    USERNAME_FIELD = 'email_addr'
+    REQUIRED_FIELDS = ['email_addr', 'password', 'company_name']
+    
+class Designer(models.AbstractBaseUser):
     """designer description"""
     #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
-    email_addr = models.EmailField(max_length=255)
+    email_addr = models.EmailField(max_length=255, unique=True, db_index=True)
     password = models.CharField(max_length=255)    
     time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now=True)
+    USERNAME_FIELD = 'email_addr'
+    REQUIRED_FIELDS = ['email_addr', 'password']
 
 class Item(models.Model):
     """supplier items"""
