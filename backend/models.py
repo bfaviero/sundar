@@ -7,14 +7,14 @@ from datetime import datetime
 
 class CustomUser(AbstractBaseUser):
     """base User model"""
-    email_addr = models.EmailField(max_length=255, unique=True, db_index=True)
+    email_addr = models.EmailField(max_length=30, unique=True, db_index=True)
     time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now=True)
     USERNAME_FIELD = 'email_addr'
   
 class Supplier(CustomUser):
     """Supplier description"""
-    company_name = models.CharField(db_index=True, max_length=255, default="", blank=True)
+    company_name = models.CharField(db_index=True, max_length=128, default="", blank=True)
     is_staff = models.BooleanField(default=False)
     CustomUser.REQUIRED_FIELDS += ['company_name']
 

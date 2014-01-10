@@ -36,7 +36,7 @@ def delete_supplier(request):
 def login_supplier(request):
     email_addr = request_arg(request, "email_addr")
     password = request_arg(request, "password")
-    user = authenticate(email_addr=email_addr, password=password)
+    user = authenticate(email_addr=email_addr, password=check_password(password))
     if user:
             login(request, user)
             return redirect("/mobile/product_list")
