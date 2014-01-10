@@ -8,7 +8,7 @@ from models import Supplier, Item
 from datetime import datetime
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.contrib.auth.hashers import make_password, check_password, is_password_usable
-
+from django.contrib.auth import authenticate, login
 
 def create_supplier(request):
     password = request_arg(request, "password")
@@ -22,7 +22,7 @@ def create_supplier(request):
             new_supp.email_addr = request_arg(request, "email_addr")
             new_supp.company_name = request_arg(request, "company_name")
             new_supp.save()
-            user_logged_in.send(sender=Supplier,request=request,user=new_supp)
+            login(request, new_supp)
             return redirect("/mobile/product_list")
     return HttpResponse("Error: Passwords do not match.")
 
@@ -36,7 +36,7 @@ def login_supplier(request):
     email_addr = request_arg(request, "email_addr")
     password = request_arg(request, "password")
     user = Supplier.objects.get(email_addr=email_addr)
-    if user.password == check_password(password):
-        # sig = user_logged_in.send(sender=Supplier,request=request,user=user)
-        return redirect("/mobile/product_list")
+    if user and user.password == check_password(password):
+            login(request, user)
+            return redirect("/mobile/product_list")
     return redirect("/mobile/sign_up")

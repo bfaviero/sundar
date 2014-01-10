@@ -53,7 +53,6 @@ def render_product_list(request):
     context = {"items": get_items(request)}
     #context.update(csrf(request))
     return Template("product_list.html", context)
- 
 
 def render_sign_up(request):
     context = {}
