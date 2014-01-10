@@ -4,7 +4,19 @@ WHOLESALE_PRICE_UNITS = {
     "USD_per_piece": "USD per piece",
 }
 
-FABRIC_WITDH_UNITS = {"cm": "centimeters", "in": "inches"}
+FABRIC_WITDH_UNITS = {
+    "cm": "centimeters",
+    "in": "inches"
+}
+
+BASIC_MATERIAL_TYPES = {
+    "Knit": "Knit",
+    "Woven": "Woven",
+    "NonWoven": "Non-Woven",
+    "LeatherSuede": "Leather & Suede",
+    "Trims": "Trims",
+    "Accessories": "Accessories",
+}
 
 TEXTILE_TYPES = {
     "Denim": "Denim",
@@ -17,18 +29,31 @@ TEXTILE_TYPES = {
     "Terry": "Terry",
 }
 
+FIBER_TYPES = {
+    "Natural": "Natural",
+    "Synthetic": "Synthetic",
+    "Both": "Both"
+}
+
 WEAVE_TYPES = {
+    "NA": "N/A",
+    "Plain": "Plain",
     "BasketMatt": "Basket/Matt",
-    "FourHarnessSatin": "Crowfoot/Four Harness Satin",
-    "EightHarnessSatin": "Eight Harness Satin",
-    "Jacquard": "Jacquard",
-    "Knit": "Knit",
     "Lano": "Lano",
     "MockLano": "Mock Lano",
-    "Plain": "Plain",
+    "FourHarnessSatin": "Crowfoot/Four Harness Satin",
+    "EightHarnessSatin": "Eight Harness Satin",
+    "Twill": "Twill",
     "Rib": "Rib",
     "Sateen": "Sateen",
     "TricotKnit": "Tricot Knit",
-    "Twill": "Twill",
-    "NA": "N/A",
+    "Jacquard": "Jacquard",
+    "Knit": "Knit",
+}
+
+FABRIC_WEIGHT_UNITS = {
+    "gsm": "gsm",
+    "g_per_yd": "grams per yard",
+    "oz_per_yd": "oz per yard",
+    "oz_per_m": "oz per meter",
 }

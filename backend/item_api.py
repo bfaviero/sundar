@@ -27,18 +27,33 @@ def set_item(request):
     else:
         item = Item()
     item.product_name = osra(request, "product_name")
+    item.product_code = osra(request, "product_code")
     #TODO: item.supplier = Supplier().objects.get(supplier_id)
     if ora(request, "in_stock"): item.in_stock = True
     else: item.in_stock = False
+    item.lead_time = osra(request, "lead_time")
     item.wholesale_price = osra(request, "wholesale_price")
     item.wholesale_price_units = osra(request, "price_units")
+    item.volume_discount = osra(request, "volume_discount")
     item.fabric_width = osra(request, "fabric_width")
     item.fabric_width_units = osra(request, "width_units")
+    item.material_type = osra(request, "material_type")
+    item.fiber_type = osra(request, "fiber_type")
     item.textile_type = osra(request, "textile_type")
     item.weave_type = osra(request, "weave_type")
+    item.weight = osra(request, "weight")
+    item.weight_units = osra(request, "weight_units")
+    item.color = osra(request, "color")
+    item.country_origin = osra(request, "country_origin")
     #TODO set image url image1_url
-    if request.FILES.get('image'):
-        item = _add_image(request.FILES['image'], supplier_id, item)
+    if request.FILES.get('image1'):
+        item = _add_image(request.FILES['image1'], supplier_id, item)
+    if request.FILES.get('image2'):
+        item = _add_image(request.FILES['image2'], supplier_id, item)
+    if request.FILES.get('image3'):
+        item = _add_image(request.FILES['image3'], supplier_id, item)
+    if request.FILES.get('image4'):
+        item = _add_image(request.FILES['image4'], supplier_id, item)
     item.save()
     return redirect("/mobile/product_list")
 

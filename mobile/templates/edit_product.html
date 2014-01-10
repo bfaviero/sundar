@@ -37,16 +37,26 @@
       <table class="table table-striped">
       
         <!-- Product name -->
-        <!-- //TODO: Maybe add some code (that's called if you're editing an existing product) to auto-populate the fields with the values currently saved for this product -->
         <tr>
           <td><label>Product name</label></td>
-          <td><input name="product_name" type="text" placeholder="Product name" value="{{ item.product_name }}"/></td>
+          <td><input name="product_name" type="text" size="25" placeholder="Product name" value="{{ item.product_name }}"/></td>
         </tr>
 
-        <!-- Upload photo -->
+        <!-- Product code/SKU -->
         <tr>
-          <td><label>Upload photo</label></td>
-          <td><input id="image" name="image" type="file" accept="image/*;capture=camera"></td>
+          <td><label>Product code/SKU</label></td>
+          <td><input name="product_code" type="text" size="25" placeholder="Product code/SKU" value="{{ item.product_code }}"/></td>
+        </tr>
+
+        <!-- Upload photos -->
+        <tr>
+          <td><label>Upload photos</label></td>
+          <td>
+            <input id="image1" name="image1" type="file" accept="image/*;capture=camera">
+            <br><input id="image2" name="image2" type="file" accept="image/*;capture=camera">
+            <br><input id="image3" name="image3" type="file" accept="image/*;capture=camera">
+            <br><input id="image4" name="image4" type="file" accept="image/*;capture=camera">
+          </td>
         </tr>
 
         <!-- In stock/made to order -->
@@ -55,7 +65,13 @@
           <td><input type="checkbox" id="in_stock" name="in_stock" {% if item.in_stock %} checked="checked"{% endif %}></td>
         </tr>
 
-        <!-- Unit price -->
+        <!-- Lead time -->
+        <tr>
+          <td><label>Lead time</label></td>
+          <td><input name="lead_time" type="tel" size="10" placeholder="2.5" value="{{ item.lead_time }}"/>weeks</td>
+        </tr>
+
+        <!-- Wholesale price -->
         <tr>
           <td><label>Wholesale price</label></td>
           <td><input type="tel" size="10" name="wholesale_price" placeholder="0.00" value="{{ item.wholesale_price }}"/>
@@ -65,8 +81,14 @@
                 {% endfor %}
               </select></td>
         </tr>
+        
+        <!-- Volume discount -->
+        <tr>
+          <td><label>Volume discount</label></td>
+          <td><input name="volume_discount" type="text" size="25" placeholder="Volume discount" value="{{ item.volume_discount }}"/></td>
+        </tr>
 
-        <!-- Width -->
+        <!-- Fabric width -->
         <tr>
           <td><label>Fabric width</label></td>
           <td><input type="tel" size="10" name="fabric_width" placeholder="0.00" value="{{ item.fabric_width }}"/>
@@ -77,14 +99,30 @@
               </select></td>
         </tr>
 
-        <!-- Material type -->
+        <!-- Basic material type -->
         <tr>
-          <td><label>Textile type</label></td>
-          <td><select id="textile_type" name="textile_type" autocomplete="off" style="font-size:1.1em;">
-            {% for type, display_type in textile_types.items %}
-              <option value="{{ type }}" {% if item.textile_type == type %}selected="selected"{% endif %}>{{ display_type }}</option>
+          <td><label>Basic material type</label></td>
+          <td><select id="material_type" name="material_type" autocomplete="off" style="font-size:1.1em;">
+            {% for type, display_type in basic_material_types.items %}
+              <option value="{{ type }}" {% if item.material_type == type %}selected="selected"{% endif %}>{{ display_type }}</option>
             {% endfor %}
           </select></td>
+        </tr>
+
+		<!-- Fiber -->
+        <tr>
+          <td><label>Fiber</label></td>
+          <td><select id="fiber_type" name="fiber_type" autocomplete="off" style="font-size:1.1em;">
+                {% for type, display_type in fiber_types.items %}
+                  <option value="{{ type }}" {% if item.fiber_type == type %}selected="selected"{% endif %}>{{ display_type }}</option>
+                {% endfor %}
+              </select></td>
+        </tr>
+
+        <!-- Textile type -->
+        <tr>
+          <td><label>Textile type</label></td>
+          <td><input name="textile_type" type="text" size="25" placeholder="Textile type" value="{{ item.textile_type }}"/></td>
         </tr>
 
         <!-- Weave type -->
@@ -95,6 +133,29 @@
               <option value="{{ type }}" {% if item.weave_type == type %}selected="selected"{% endif %}>{{ display_type }}</option>
             {% endfor %}
           </select></td>
+        </tr>
+
+        <!-- Fabric weight -->
+        <tr>
+          <td><label>Fabric weight</label></td>
+          <td><input type="tel" size="10" name="weight" placeholder="0.00" value="{{ item.weight }}"/>
+              <select id="weight_units" name="weight_units" autocomplete="off" style="font-size:1.1em;">
+                {% for unit, display_unit in fabric_weight_units.items %}
+                  <option value="{{ unit }}" {% if item.weight_units == unit %}selected="selected"{% endif %}>{{ display_unit }}</option>
+                {% endfor %}
+              </select></td>
+        </tr>
+
+        <!-- Color -->
+        <tr>
+          <td><label>Color</label></td>
+          <td><input name="color" type="text" size="25" placeholder="Imperial Purple (Pantone 19-3528 TCX)" value="{{ item.color }}"/></td>
+        </tr>
+
+        <!-- Country of origin -->
+        <tr>
+          <td><label>Country of origin</label></td>
+          <td><input name="country_origin" type="text" size="25" placeholder="India" value="{{ item.country_origin }}"/></td>
         </tr>
 
       </table>
