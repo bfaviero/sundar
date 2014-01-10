@@ -44,13 +44,13 @@ def set_item(request):
     item.country_origin = osra(request, "country_origin")
     #TODO set image url image1_url
     if request.FILES.get('image1'):
-        item = _add_image(request.FILES['image1'], supplier_id, item)
+        item = _add_image(request.FILES['image1'], request.user.email_addr, item)
     if request.FILES.get('image2'):
-        item = _add_image(request.FILES['image2'], supplier_id, item)
+        item = _add_image(request.FILES['image2'], request.user.email_addr, item)
     if request.FILES.get('image3'):
-        item = _add_image(request.FILES['image3'], supplier_id, item)
+        item = _add_image(request.FILES['image3'], request.user.email_addr, item)
     if request.FILES.get('image4'):
-        item = _add_image(request.FILES['image4'], supplier_id, item)
+        item = _add_image(request.FILES['image4'], request.user.email_addr, item)
     item.save()
     return redirect("/mobile/product_list")
 
