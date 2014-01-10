@@ -22,7 +22,8 @@ def create_supplier(request):
             new_supp.email_addr = request_arg(request, "email_addr")
             new_supp.company_name = request_arg(request, "company_name")
             new_supp.save()
-            login(request, new_supp)
+            user = authenticate(email_addr=new_supp.email_addr, password=new_supp.password)
+            login(request, user)
             return redirect("/mobile/product_list")
     return HttpResponse("Error: Passwords do not match.")
 
@@ -35,8 +36,8 @@ def delete_supplier(request):
 def login_supplier(request):
     email_addr = request_arg(request, "email_addr")
     password = request_arg(request, "password")
-    user = Supplier.objects.get(email_addr=email_addr)
-    if user and user.password == check_password(password):
+    user = authenticate(email_addr=email_addr, password=password)
+    if user:
             login(request, user)
             return redirect("/mobile/product_list")
     return redirect("/mobile/sign_up")
