@@ -7,6 +7,9 @@
   <title>Sundar | Edit Product</title>
   <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css" type="text/css"/>
   <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/static/js/tag-it.js" type="text/javascript" charset="utf-8"></script>
+
   <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 
   <script>
@@ -22,6 +25,18 @@
 
     myInput.addEventListener('change', sendPic, false);
   </script>
+  <script>
+    $(function(){
+        var tags = ["Pile Flax", "Hemp", "Jute", "Ramie", "Manila", "Sisal", "Cotton", "Kapok", "Bamboo", "Garbadine Alpaca", "Camel", "Cashmere", "Llama", "Mohair", "Vicuna", "Sheep", "Denim Silk", "Mulberry Silk", "Wild Silk", "Muga Silk", "Eri Silk", "Tussar Silk", "Kosa Silk", "Serge Rayon", "Lyoceli", "Acetate", "Triacetate", "Azion", "Rubber", "Drill Acrylic", "Anidex", "Aramid", "Fluorocarbon", "Modacrylic", "Modal", "Novoloid", "Nylon", "Nytril", "Olefin", "PBI", "Polycarbonate", "Polyester", "Rubber", "Saran", "Spandex", "Vinal", "Vinyon", "Lycra", "Satin Polyamide", "Terry Polyester", "Plush Polyvinyl Derivatives", "Weft-Pile Polyolefine", "Velveteen Polyurathanes", "Corduroy Lace", "Velvet Washed Satin", "Tweed Modal", "Felt Polyester", "Cotton Leather", "Calico Suede", "Brocade Charmeuse", "Damask Neoprene", "Tapestry Silk Lurex Blend", "Silk Crepe", "Jersey Net", "Organza Rayon", "Gazar Cashmere", "Wool Mohair", "Alpaca", "Metallic", "Specialty"];
+        //-------------------------------
+        // Preloading data in markup
+        //-------------------------------
+        $('#textile_type').tagit({
+            availableTags: tags,
+            fieldName: 'type'
+        });
+    });
+  </script>
 </head>
 
 <body>
@@ -35,7 +50,7 @@
       {% csrf_token %}
       <input name="item_id" value="{{ item.id }}" type="hidden"/>
       <table class="table table-striped">
-      
+
         <!-- Product name -->
         <tr>
           <td><label>Product name</label></td>
@@ -52,17 +67,23 @@
         <tr>
           <td><label>Upload photos</label></td>
           <td>
+            <img src="{{ item.image1_url }}" alt="product photograph" width="75" height="75">
             <input id="image1" name="image1" type="file" accept="image/*;capture=camera">
+            <img src="{{ item.image2_url }}" alt="product photograph" width="75" height="75">
             <br><input id="image2" name="image2" type="file" accept="image/*;capture=camera">
+            <img src="{{ item.image3_url }}" alt="product photograph" width="75" height="75">
             <br><input id="image3" name="image3" type="file" accept="image/*;capture=camera">
+            <img src="{{ item.image4_url }}" alt="product photograph" width="75" height="75">
             <br><input id="image4" name="image4" type="file" accept="image/*;capture=camera">
           </td>
         </tr>
 
         <!-- In stock/made to order -->
         <tr>
-          <td><label>In stock</label></td>
+          <td><label>Inventory</label></td>
           <td><input type="checkbox" id="in_stock" name="in_stock" {% if item.in_stock %} checked="checked"{% endif %}></td>
+          <td><input type="checkbox" id="made_to_order" name="made_to_order" {% if item.made_to_order %} checked="checked"{% endif %}></td>
+          <td><input type="checkbox" id="reorder_av" name="reorder_av" {% if item.reorder_av %} checked="checked"{% endif %}></td>
         </tr>
 
         <!-- Lead time -->
@@ -81,7 +102,7 @@
                 {% endfor %}
               </select></td>
         </tr>
-        
+
         <!-- Volume discount -->
         <tr>
           <td><label>Volume discount</label></td>
@@ -119,10 +140,15 @@
               </select></td>
         </tr>
 
-        <!-- Textile type -->
+    <!-- Textile type -->
         <tr>
           <td><label>Textile type</label></td>
-          <td><input name="textile_type" type="text" size="25" placeholder="Textile type" value="{{ item.textile_type }}"/></td>
+          <ul id="textile_type">
+              <li>Tag1</li>
+              <li>Tag2</li>
+          </ul>
+          <td><input id="textile_type" name="textile_type" type="text" size="25" placeholder="Textile type" value="{{ item.textile_type }}"/></td>
+
         </tr>
 
         <!-- Weave type -->

@@ -9,7 +9,7 @@ class Supplier(models.Model):
     """supplier description"""
     #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
     email_addr = models.EmailField(max_length=255)
-    password = models.CharField(max_length=512)    
+    password = models.CharField(max_length=512)
     time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now=True)
     company_name = models.CharField(db_index=True, max_length=128, default="", blank=True)
@@ -19,7 +19,7 @@ class Designer(models.Model):
     """designer description"""
     #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
     email_addr = models.EmailField(max_length=255)
-    password = models.CharField(max_length=255)    
+    password = models.CharField(max_length=255)
     time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now=True)
 
@@ -61,7 +61,7 @@ class Item(models.Model):
 class PhotoUrl(models.Model):
     url = models.CharField(max_length=255)
     uploaded = models.DateTimeField()
-    
+
     def save(self):
         self.uploaded = datetime.now()
         models.Model.save(self)
