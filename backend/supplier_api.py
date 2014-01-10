@@ -22,9 +22,7 @@ def create_supplier(request):
             new_supp.email_addr = request_arg(request, "email_addr")
             new_supp.company_name = request_arg(request, "company_name")
             new_supp.save()
-            user = authenticate(email_addr=new_supp.email_addr, password=new_supp.password)
-            login(request, user)
-            return redirect("/mobile/product_list")
+            return redirect("/mobile/")
     return HttpResponse("Error: Passwords do not match.")
 
 def update_supplier(request):
