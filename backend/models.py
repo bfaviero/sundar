@@ -10,6 +10,7 @@ class CustomUser(AbstractBaseUser):
     """inherited fields: id, password, last_login"""
     email_addr = models.EmailField(max_length=30, unique=True, db_index=True)
     time_created = models.DateTimeField(auto_now_add=True)
+    last_logged_in = models.DateTimeField(auto_now=True)
     USERNAME_FIELD = 'email_addr'
   
 class Supplier(CustomUser):
