@@ -1,31 +1,28 @@
 from django.db import models
 from django import forms
 from decimal import Decimal
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractBaseUser
 from django import forms
 from datetime import datetime
 
-class Supplier(models.AbstractBaseUser):
-    """supplier description"""
-    #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
-    email_addr = models.EmailField(max_length=255, unique=True, db_index=True)
-    password = models.CharField(max_length=512)    
+class CustomUser(AbstractBaseUser):
+    """base User model"""
+    email_addr = models.EmailField(max_length=256, unique=True, db_index=True)
+    password = models.CharField(max_length=512)
     time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now=True)
-    company_name = models.CharField(db_index=True, max_length=128, default="", blank=True)
+    USERNAME_FIELD = 'email_addr'
+    REQUIRED_FIELDS = ['password']
+  
+class Supplier(CustomUser):
+    """Supplier description"""
+    company_name = models.CharField(db_index=True, max_length=256, default="", blank=True)
     is_staff = models.BooleanField(default=False)
-    USERNAME_FIELD = 'email_addr'
-    REQUIRED_FIELDS = ['email_addr', 'password', 'company_name']
-    
-class Designer(models.AbstractBaseUser):
-    """designer description"""
-    #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
-    email_addr = models.EmailField(max_length=255, unique=True, db_index=True)
-    password = models.CharField(max_length=255)    
-    time_created = models.DateTimeField(auto_now_add=True)
-    last_logged_in = models.DateTimeField(auto_now=True)
-    USERNAME_FIELD = 'email_addr'
-    REQUIRED_FIELDS = ['email_addr', 'password']
+    CustomUser.REQUIRED_FIELDS += ['company_name']
+
+class Designer(CustomUser):
+    """Designer description"""
+    pass
 
 class Item(models.Model):
     """supplier items"""
@@ -42,7 +39,7 @@ class Item(models.Model):
     lead_time = models.CharField(max_length=32, default="", blank=True)
     wholesale_price = models.CharField(max_length=32, default="", blank=True)
     wholesale_price_units = models.CharField(max_length=32, default="", blank=True)
-    volume_discount = models.CharField(max_length=512, default="", blank=True)
+    volume_discount = models.CharField(max_length=32, default="", blank=True)
     fabric_width = models.CharField(max_length=32, default="", blank=True)
     fabric_width_units = models.CharField(max_length=32, default="", blank=True)
     material_type = models.CharField(max_length=32, default="", blank=True)
@@ -51,7 +48,6 @@ class Item(models.Model):
     weave_type = models.CharField(max_length=32, default="", blank=True)
     description = models.CharField(max_length=512, default="", blank=True)
     weight = models.CharField(max_length=32, default="", blank=True)
-    weight_units = models.CharField(max_length=32, default="", blank=True)
     color = models.CharField(max_length=32, default="", blank=True)
     dying = models.CharField(max_length=32, default="", blank=True)
     color_fast_testing = models.CharField(max_length=32, default="", blank=True)
