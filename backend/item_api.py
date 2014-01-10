@@ -67,8 +67,8 @@ def delete_item(request):
     return HttpResponse("SUCCESS DELETE ITEM")
 
 def get_items(request):
-    #TODO: uncomment after account functionality built; current return is for demo
-    #sup = Supplier.objects.get(id=request_arg(request, "supplier_id"))
-    #return Item.objects.all()
     return Item.objects.filter(supplier=request.user) 
+
+def get_all_items(request):
+    return Item.objects.all()
  
