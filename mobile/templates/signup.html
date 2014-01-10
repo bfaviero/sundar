@@ -17,20 +17,20 @@
 
     <!-- //TODO: Replace this action with the real action that creates an account, once account validation is finished -->
     <!-- <form id="signup_form" action="/mobile/sign_up"> -->
-    <form id="signup_form" action="/mobile/product_list">
+    <form id="signup_form" action="/mobile/create_user">
       {% csrf_token %}
       <table class="table">
         <!-- Username --> 
         <tr>
           <td><label>Company Name</label></td>
-          <td><input name="company_name" type="text" placeholder="Company Name"/></td>
+          <td><input name="company_name" type="text" placeholder="Company Name" maxlength="128"/></td>
         </tr>
 
         <!-- Email address -->
         <!-- //TODO: I was thinking of making Email Address the unique account ID because I think email addresses are easier for users to remember than usernames they have to create, but this is up to you! -->
         <tr>
           <td><label>Email Address</label></td>
-          <td><input name="email_addr" type="text" placeholder="name@example.com"/></td>
+          <td><input name="email_addr" type="text" placeholder="name@example.com" maxlength="30"/></td>
         </tr>
 
         <!-- Password -->

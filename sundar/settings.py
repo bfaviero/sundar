@@ -21,6 +21,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 ALLOWED_HOSTS = []
 
+AUTH_PROFILE_MODULE = 'backend.models.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 DATABASES = {
@@ -51,6 +52,8 @@ INSTALLED_APPS = (
     'web',
     'south',
 )
+
+AUTHENTICATION_BACKENDS = ('backend.models.CustomBackend',)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -16,9 +16,6 @@ def set_item(request):
     item = None
     item_id = ora(request, "item_id")
     #TODO: supplier = ora(request, "supplier_id")
-    supplier_id = ora(request, "supplier_id")
-    if not supplier_id:
-        supplier_id = "TEST"
     if item_id:
         try:
             item = Item.objects.get(id=item_id)
@@ -28,7 +25,7 @@ def set_item(request):
         item = Item()
     item.product_name = osra(request, "product_name")
     item.product_code = osra(request, "product_code")
-    #TODO: item.supplier = Supplier().objects.get(supplier_id)
+    item.supplier = Supplier.objects.get(email_addr=request.user.email_addr)
     if ora(request, "in_stock"): item.in_stock = True
     else: item.in_stock = False
     item.lead_time = osra(request, "lead_time")
@@ -47,13 +44,13 @@ def set_item(request):
     item.country_origin = osra(request, "country_origin")
     #TODO set image url image1_url
     if request.FILES.get('image1'):
-        item = _add_image(request.FILES['image1'], supplier_id, item)
+        item = _add_image(request.FILES['image1'], request.user.email_addr, item)
     if request.FILES.get('image2'):
-        item = _add_image(request.FILES['image2'], supplier_id, item)
+        item = _add_image(request.FILES['image2'], request.user.email_addr, item)
     if request.FILES.get('image3'):
-        item = _add_image(request.FILES['image3'], supplier_id, item)
+        item = _add_image(request.FILES['image3'], request.user.email_addr, item)
     if request.FILES.get('image4'):
-        item = _add_image(request.FILES['image4'], supplier_id, item)
+        item = _add_image(request.FILES['image4'], request.user.email_addr, item)
     item.save()
     return redirect("/mobile/product_list")
 
@@ -70,7 +67,7 @@ def delete_item(request):
     return HttpResponse("SUCCESS DELETE ITEM")
 
 def get_items(request):
-    #TODO: uncomment after account functionality built; current return is for demo
-    #sup = Supplier.objects.get(id=request_arg(request, "supplier_id"))
-    #return Item.objects.all(supplier=sup)
+    return Item.objects.filter(supplier=request.user)
+
+def get_all_items(request):
     return Item.objects.all()
