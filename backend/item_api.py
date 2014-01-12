@@ -25,7 +25,11 @@ def set_item(request):
         item = Item()
     item.product_name = osra(request, "product_name")
     item.product_code = osra(request, "product_code")
-    item.supplier = Supplier.objects.get(email_addr=request.user.email_addr)
+    #TO TURN ACCOUNTS ON, exchange request.user.email_addr for ACCOUNTS_OFF_EMAIL in lines below
+    #item.supplier = Supplier.objects.get(email_addr=request.user.email_addr)
+    ACCOUNTS_OFF_EMAIL = 'jagkgill@gmail.com'
+    item.supplier = Supplier.objects.get(email_addr=ACCOUNTS_OFF_EMAIL)
+
     if ora(request, "in_stock"): item.in_stock = True
     else: item.in_stock = False
     item.lead_time = osra(request, "lead_time")
@@ -43,14 +47,16 @@ def set_item(request):
     item.color = osra(request, "color")
     item.country_origin = osra(request, "country_origin")
     #TODO set image url image1_url
+    #TO TURN ACCOUNTS ON
+    
     if request.FILES.get('image1'):
-        item = _add_image(request.FILES['image1'], request.user.email_addr, item)
+        item = _add_image(request.FILES['image1'], ACCOUNTS_OFF_EMAIL, item)
     if request.FILES.get('image2'):
-        item = _add_image(request.FILES['image2'], request.user.email_addr, item)
+        item = _add_image(request.FILES['image2'], ACCOUNTS_OFF_EMAIL, item)
     if request.FILES.get('image3'):
-        item = _add_image(request.FILES['image3'], request.user.email_addr, item)
+        item = _add_image(request.FILES['image3'], ACCOUNTS_OFF_EMAIL, item)
     if request.FILES.get('image4'):
-        item = _add_image(request.FILES['image4'], request.user.email_addr, item)
+        item = _add_image(request.FILES['image4'], ACCOUNTS_OFF_EMAIL, item)
     item.save()
     return redirect("/mobile/product_list")
 
