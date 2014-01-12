@@ -4,7 +4,7 @@ from django.core.context_processors import csrf
 from templating import Template, error_page
 from django.contrib.auth.hashers import make_password, check_password, is_password_usable
 from backend.models import Supplier, Item
-from backend.item_api import get_items, get_all_items
+from backend.item_api import get_items
 from django.forms.models import model_to_dict
 from constants import TEXTILE_TYPES, WEAVE_TYPES, WHOLESALE_PRICE_UNITS,\
     FABRIC_WITDH_UNITS, BASIC_MATERIAL_TYPES, FABRIC_WEIGHT_UNITS, FIBER_TYPES
@@ -35,8 +35,8 @@ def render_edit_product(request):
     return Template("edit_product.html", context)
 
 def render_product_list(request):
-    #TO TURN ACCOUNTS ON, exhange this line with next line: context = {"items": get_items(request)}
-    context = {"items": get_all_items(request)}
+    #TO TURN ACCOUNTS ON, exhange this line with next line: 
+    context = {"items": get_items(request)}
     #context.update(csrf(request))
     return Template("product_list.html", context)
 
