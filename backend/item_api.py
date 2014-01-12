@@ -25,6 +25,8 @@ def set_item(request):
         item = Item()
     item.product_name = osra(request, "product_name")
     item.product_code = osra(request, "product_code")
+    #TO TURN ACCOUNTS ON, exchange request.user.email_addr for ACCOUNTS_OFF_EMAIL in lines below
+    #ACCOUNTS_OFF_EMAIL = 'jagkgill@gmail.com'
     item.supplier = Supplier.objects.get(email_addr=request.user.email_addr)
     if ora(request, "in_stock"): item.in_stock = True
     else: item.in_stock = False
@@ -43,6 +45,8 @@ def set_item(request):
     item.color = osra(request, "color")
     item.country_origin = osra(request, "country_origin")
     #TODO set image url image1_url
+    #TO TURN ACCOUNTS ON
+    
     if request.FILES.get('image1'):
         item = _add_image(request.FILES['image1'], request.user.email_addr, item)
     if request.FILES.get('image2'):
