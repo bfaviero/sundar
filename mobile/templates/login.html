@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sundar | Log in</title>
-  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" type="text/css"/>
-</head>
-
-<body>
+{% extends "mobile_base.html" %}
+{% block body %}
   {% load staticfiles %}
   <div class="container">
 
@@ -37,16 +29,12 @@
           <td></td>
         </tr>
       <br>
-      
+
       </table>
     </form>
 
     <hr>
     <p>Not yet a member? <a href="/mobile/sign_up" class="btn btn-large btn-primary">Join Sundar</a></p>
     <br><br><br><br><br><br><br><br><br><br><br><br>
-  <div>
-  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
-
-</body>
-</html>
+  </div>
+{% endblock %}

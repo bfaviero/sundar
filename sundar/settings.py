@@ -24,6 +24,7 @@ ALLOWED_HOSTS = []
 AUTH_PROFILE_MODULE = 'backend.models.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -32,6 +33,18 @@ DATABASES = {
         'PASSWORD': 'mAR.20ecWk',
         'HOST': 'sundar-instance-1.cxpjixe6nt87.us-west-2.rds.amazonaws.com',
         'PORT': '3306',
+    }
+}
+'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'dt.db',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': ''
     }
 }
 
@@ -67,7 +80,6 @@ MIDDLEWARE_CLASSES = (
 PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
     'django.contrib.auth.hashers.BCryptPasswordHasher',
     'django.contrib.auth.hashers.SHA1PasswordHasher',
     'django.contrib.auth.hashers.MD5PasswordHasher',
@@ -114,6 +126,7 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     #BASE_DIR + '/../static/',
     #os.path.join(BASE_DIR, "../static/"),
+    os.path.join(BASE_DIR, "static"),
     '/var/www/sundar-backend/static/',
 )
 
