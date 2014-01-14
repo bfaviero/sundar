@@ -55,7 +55,7 @@ class Item(models.Model):
     in_stock = models.BooleanField(default=True, blank=True)
     price_on_request = models.BooleanField(default=False, blank=True)
     made_to_order = models.BooleanField(default=False, blank=True)
-    lead_time = models.CharField(max_length=32, default="", blank=True)
+    lead_time = models.DecimalField(max_digits=19, decimal_places=2)
     wholesale_price = models.DecimalField(max_digits=19, decimal_places=2)
     wholesale_price_units = models.CharField(max_length=32, default="", blank=True)
     volume_discount = models.CharField(max_length=32, default="", blank=True)

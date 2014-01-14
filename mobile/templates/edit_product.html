@@ -62,9 +62,7 @@
     $(document).ready(function() {
       $('.img_upload').change(function() {
         var that = this;
-        console.log("uploaded");
         if (this.files && this.files[0]) {
-                console.log("okay, there's an image");
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
@@ -123,15 +121,21 @@
         <!-- In stock/made to order -->
         <tr>
           <td><label>Inventory</label></td>
-          <td><input type="checkbox" id="in_stock" name="in_stock" {% if item.in_stock %} checked="checked"{% endif %}></td>
-          <td><input type="checkbox" id="made_to_order" name="made_to_order" {% if item.made_to_order %} checked="checked"{% endif %}></td>
-          <td><input type="checkbox" id="reorder_av" name="reorder_av" {% if item.reorder_av %} checked="checked"{% endif %}></td>
+          <td><input type="checkbox" id="in_stock" name="in_stock" {% if item.in_stock %} checked="checked"{% endif %}> In stock<br>
+          <input type="checkbox" id="made_to_order" name="made_to_order" {% if item.made_to_order %} checked="checked"{% endif %}> Made to order<br>
+          <input type="checkbox" id="reorder_av" name="reorder_av" {% if item.reorder_av %} checked="checked"{% endif %}> Reorder A/V</td>
         </tr>
 
         <!-- Lead time -->
         <tr>
           <td><label>Lead time</label></td>
-          <td><input name="lead_time" type="tel" size="10" placeholder="2.5" value="{{ item.lead_time }}"/>weeks</td>
+          <td><input name="lead_time" type="tel" size="10" placeholder="2.5" value="{{ item.lead_time }}"/>
+          <select id="lead_time_unit" name="lead_time_unit">
+            <option value="days">Days</option>
+            <option value="weeks">Weeks</option>
+            <option value="months">Months</option>
+          </select>
+          </td>
         </tr>
 
         <!-- Wholesale price -->
