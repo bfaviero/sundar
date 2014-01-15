@@ -8,9 +8,9 @@ from django.contrib.auth.hashers import make_password, check_password, is_passwo
 from datetime import datetime
 class CustomBackend:
     #This must be called before login(request, user)
-    def authenticate(self, username=None, password=None):
+    def authenticate(self, email=None, password=None):
         try:
-            user = CustomUser.objects.get(email=username)
+            user = CustomUser.objects.get(email=email)
             if user.check_password(password):
                 return user
             else:
@@ -52,12 +52,6 @@ class CustomUserManager(BaseUserManager):
                                  **extra_fields)
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    """
-    A fully featured User model with admin-compliant permissions that uses
-    a full-length email field as the username.
-
-    Email and password are required. Other fields are optional.
-    """
     email = models.EmailField(max_length=254, unique=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
