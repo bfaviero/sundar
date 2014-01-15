@@ -30,9 +30,9 @@ def set_item(request):
     #ACCOUNTS_OFF_EMAIL = 'jagkgill@gmail.com'
     item.supplier = Supplier.objects.get(email_addr=request.user.email_addr)
     #boolean value
-    item.in_stock = ora(request, "in_stock")
-    item.made_to_order = ora(request, "made_to_order")
-    item.reorder_av = ora(request, "reorder_av")
+    item.in_stock = ora(request, "in_stock") if ora(request, "in_stock") else False
+    item.made_to_order = ora(request, "made_to_order") if ora(request, "made_to_order") else False
+    item.reorder_av = ora(request, "reorder_av") if ora(request, "reorder_av") else False
     lead_time_unit = osra(request, "lead_time_unit")
     item.lead_time = lead_time(Decimal(osra(request, "lead_time")), lead_time_unit)
     item.wholesale_price = Decimal(osra(request, "wholesale_price"))
@@ -46,7 +46,7 @@ def set_item(request):
     item.weave_type = osra(request, "weave_type")
     item.weight = osra(request, "weight")
     item.weight_units = osra(request, "weight_units")
-    item.color = osra(request1, "color")
+    item.color = osra(request, "color")
     item.country_origin = osra(request, "country_origin")
     #TODO set image url image1_url
     #TO TURN ACCOUNTS ON
