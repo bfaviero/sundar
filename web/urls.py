@@ -4,8 +4,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = patterns('login',
     url(r'^$', login),
-    url(r'^login', login, name="login"),
-    url(r'^validate_login', validate_login, name="validate_login"),
+    url(r'^login', 'django.contrib.auth.views.login', name='login'),
 )
 urlpatterns += patterns('items',
 	url(r'^market', market, name="market"),

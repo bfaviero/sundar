@@ -15,7 +15,7 @@ class CustomBackend:
                 return user
             else:
                 return None
-        except User.DoesNotExist:
+        except CustomUser.DoesNotExist:
             return None
     # Required
     def get_user(self, user_id):
