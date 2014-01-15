@@ -12,7 +12,7 @@
     <h2>Log In</h2>
     <form method="POST" action="/validate_login">  <!-- Replace 'action="/validate_login"' with something that processes your POST request and validates the password -->
       {% csrf_token %}
-      <input name="username" type="text" placeholder="Username"/>
+      <input name="email" type="text" placeholder="Email"/>
       <input name="password" type="password" placeholder="Password"/>
       <input type="submit" name="submit" value="Log in" class="btn btn-large btn-primary">
     </form>
