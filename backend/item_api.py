@@ -8,15 +8,10 @@ from s3_api import upload_image
 from models import Supplier, Item
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 
-def get_item(request):
-    item_id = request_arg(request, "item_id")
+def get_item(request, item_id):
     return Item.objects.get(id=item_id)
 
-def set_item(request):
-    """ If item exists, update item. Else, create new item """
-    item = None
-    item_id = ora(request, "item_id")
-    #TODO: supplier = ora(request, "supplier_id")
+def set_item(request, item_id):
     if item_id:
         try:
             item = Item.objects.get(id=item_id)
