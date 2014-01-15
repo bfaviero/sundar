@@ -129,7 +129,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     '/var/www/sundar-backend/static/',
 )
-
+AUTH_USER_MODEL = 'backend.CustomUser'
 
 
 
