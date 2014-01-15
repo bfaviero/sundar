@@ -130,7 +130,7 @@ STATICFILES_DIRS = (
     '/var/www/sundar-backend/static/',
 )
 AUTH_USER_MODEL = 'backend.CustomUser'
-
+LOGIN_URL = '/login/'
 
 
 # Internationalization
