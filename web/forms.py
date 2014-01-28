@@ -14,7 +14,7 @@ class UserForm(forms.Form):
          return self.cleaned_data
 
     def login(self, request):
-         username = self.cleaned_data.get('username')
+         email = self.cleaned_data.get('email')
          password = self.cleaned_data.get('password')
          user = authenticate(email=email, password=password)
          return user

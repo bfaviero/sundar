@@ -1,0 +1,8 @@
+Django==1.5.5
+MySQL-python==1.2.5
+South==0.8.2
+django-bootstrap-toolkit==2.15.0
+virtualenv==1.11
+virtualenv-clone==0.2.4
+virtualenvwrapper==4.2
+django-zurb-foundation==5.0.3

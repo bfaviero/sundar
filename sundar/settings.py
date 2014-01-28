@@ -48,6 +48,7 @@ DATABASES = {
     }
 }
 
+
 ROOT_URLCONF = 'sundar.urls'
 WSGI_APPLICATION = 'sundar.wsgi.application'
 
@@ -64,6 +65,8 @@ INSTALLED_APPS = (
     'sundar',
     'web',
     'south',
+    'djangobower',
+    'foundation'
 )
 
 AUTHENTICATION_BACKENDS = ('backend.models.CustomBackend',)
@@ -102,7 +105,8 @@ TEMPLATE_DIRS = (
     '/var/www/sundar-backend/web/templates/',
 
 )
-
+BOWER_PATH = '/usr/bin/bower'
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media-collected')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
@@ -113,6 +117,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
@@ -131,7 +136,7 @@ STATICFILES_DIRS = (
 )
 AUTH_USER_MODEL = 'backend.CustomUser'
 LOGIN_URL = '/login/'
-
+ACCOUNT_USERNAME_REQUIRED = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

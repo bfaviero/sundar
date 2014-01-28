@@ -1,36 +1,26 @@
 {% extends "mobile_base.html" %}
+{% block title %}Log In {% endblock %}
 {% block body %}
   {% load staticfiles %}
   <div class="container">
 
     <h3>Log in to Sundar as a supplier</h3>
+
     <br>
-
-    <!-- //TODO: Replace this link with the real action that validates login credentials, once account validation is finished -->
-    <!-- <form action="/mobile/login"> -->
-    <form action="/mobile/login">
-      {% csrf_token %}
-      <table class="table">
-        <!-- Use email address as unique user ID instead of username -->
-        <tr>
-          <td><label>Email Address</label></td>
-          <td><input name="email_addr" type="text" placeholder="name@example.com"/></td>
-        </tr>
-
-        <!-- Password -->
-        <tr>
-          <td><label>Password</label></td>
-          <td><input name="password" type="password" placeholder="password"/></td>
-        </tr>
-
-        <!-- Submit button -->
-        <tr>
-          <td><input type="submit" name="submit" value="Log in" class="btn btn-large btn-primary"></td>
-          <td></td>
-        </tr>
-      <br>
-
-      </table>
+    {% for error in form.non_field_errors %}
+      <p style="color: red;">{{ error }}</p>
+    {% endfor %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="field">
+            {{ form.email.errors }}
+            {{ form.email }}
+        </div>
+        <div class="field">
+            {{ form.password.errors }}
+            {{ form.password }}
+        </div>
+        <input type="submit" name="submit" value="Log in" class="btn btn-large btn-primary">
     </form>
 
     <hr>

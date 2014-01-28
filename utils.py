@@ -18,7 +18,7 @@ def log_error(e, message=None):
     except: print("ERROR IN log_error")
 
 def request_arg(request, arg):
-    try: 
+    try:
         ret = request.REQUEST[arg]
         if not ret:
             raise BadRequestError("%s empty" % arg)

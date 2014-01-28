@@ -6,16 +6,19 @@ from django import forms
 from datetime import datetime
 from django.contrib.auth.hashers import make_password, check_password, is_password_usable
 from datetime import datetime
+from django.contrib.auth import get_user_model
+
 class CustomBackend:
-    #This must be called before login(request, user)
-    def authenticate(self, email=None, password=None):
+    def authenticate(self, email=None, password=None, username=None):
+        if username and not email:
+            email=username
         try:
-            user = CustomUser.objects.get(email=email)
+            user = get_user_model().objects.get(email=email)
             if user.check_password(password):
                 return user
             else:
                 return None
-        except CustomUser.DoesNotExist:
+        except get_user_model().DoesNotExist:
             return None
     # Required
     def get_user(self, user_id):
@@ -26,30 +29,30 @@ class CustomBackend:
 
 class CustomUserManager(BaseUserManager):
 
-    def _create_user(self, email, password,
-                     is_staff, is_superuser, **extra_fields):
-        """
-        Creates and saves a User with the given email and password.
-        """
-        now = datetime.now()
-        if not email:
-            raise ValueError('The given email must be set')
-        email = self.normalize_email(email)
-        user = self.model(email=email,
-                          is_staff=is_staff, is_active=True,
-                          is_superuser=is_superuser, last_login=now,
-                          date_joined=now, **extra_fields)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
+        def _create_user(self, email, password,
+                         is_staff, is_superuser, **extra_fields):
+            """
+            Creates and saves a User with the given email and password.
+            """
+            now = datetime.now()
+            if not email:
+                raise ValueError('The given email must be set')
+            email = self.normalize_email(email)
+            user = self.model(email=email,
+                              is_staff=is_staff, is_active=True,
+                              is_superuser=is_superuser, last_login=now,
+                              date_joined=now, **extra_fields)
+            user.set_password(password)
+            user.save(using=self._db)
+            return user
 
-    def create_user(self, email, password=None, **extra_fields):
-        return self._create_user(email, password, False, False,
-                                 **extra_fields)
+        def create_user(self, email, password=None, **extra_fields):
+            return self._create_user(email, password, False, False,
+                                     **extra_fields)
 
-    def create_superuser(self, email, password, **extra_fields):
-        return self._create_user(email, password, True, True,
-                                 **extra_fields)
+        def create_superuser(self, email, password, **extra_fields):
+            return self._create_user(email, password, True, True,
+                                     **extra_fields)
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=254, unique=True)
@@ -93,6 +96,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         """
         send_mail(subject, message, from_email, [self.email])
 
+
+
+
 class Supplier(CustomUser):
     """Supplier description"""
     company_name = models.CharField(db_index=True, max_length=128, default="", blank=True)
@@ -100,6 +106,30 @@ class Supplier(CustomUser):
 class Designer(CustomUser):
     """Designer description"""
     pass
+
+class Thread(models.Model):
+    pass
+
+CATEGORY_CHOICES = (('L', 'Like'), ('M', 'Message'))
+
+class Message(models.Model):
+
+    sender = models.ForeignKey(CustomUser, related_name="sent_messages")
+    recipient = models.ForeignKey(CustomUser, related_name="received_messages")
+
+    thread = models.ForeignKey(Thread, related_name="messages")
+    category = models.CharField(max_length=2, choices=CATEGORY_CHOICES)
+    text = models.TextField(blank=True, null=True)
+
+class Rating(models.Model):
+    supplier =  models.ForeignKey(Supplier, related_name="ratings")
+    designer = models.ForeignKey(Designer, related_name="ratings")
+    rating = models.PositiveSmallIntegerField()
+
+class Like(models.Model):
+    supplier = models.ForeignKey(Supplier)
+    designer = models.ForeignKey(Designer)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class Item(models.Model):
     """supplier items"""
@@ -133,7 +163,8 @@ class Item(models.Model):
     sustainability = models.CharField(max_length=32, default="", blank=True)
     time_updated = models.DateTimeField(auto_now=True)
     time_created = models.DateTimeField(auto_now_add=True)
-
+    def get_absolute_url(self):
+        return "/items/{{item.id}}/"
 
 class PhotoUrl(models.Model):
     url = models.CharField(max_length=255)

@@ -19,7 +19,7 @@ def create_supplier(request):
         else:
             new_supp = Supplier()
             new_supp.set_password(password)
-            new_supp.email_addr = request_arg(request, "email_addr")
+            new_supp.email = request_arg(request, "email")
             new_supp.company_name = request_arg(request, "company_name")
             new_supp.save()
             return redirect("/mobile/")

@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-
 from backend.models import CustomUser
+from django import forms
+
 
 class CustomUserCreationForm(UserCreationForm):
     """
@@ -24,7 +25,7 @@ class CustomUserChangeForm(UserChangeForm):
 
     def __init__(self, *args, **kargs):
         super(CustomUserChangeForm, self).__init__(*args, **kargs)
-        del self.fields['username']
+        del self.fields['email']
 
     class Meta:
         model = CustomUser

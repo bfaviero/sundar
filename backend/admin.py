@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import ugettext_lazy as _
 
-from backend.models import CustomUser
+from backend.models import *
 from backend.forms import CustomUserChangeForm, CustomUserCreationForm
 
 class CustomUserAdmin(UserAdmin):
@@ -24,10 +24,15 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('email', 'password1', 'password2')}
         ),
     )
-    form = CustomUserChangeForm
-    add_form = CustomUserCreationForm
+    #form = CustomUserChangeForm
+    #add_form = CustomUserCreationForm
     list_display = ('email', 'first_name', 'last_name', 'is_staff')
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('email',)
 
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Supplier)
+admin.site.register(Designer)
+admin.site.register(Item)
+admin.site.register(Thread)
+admin.site.register(Message)

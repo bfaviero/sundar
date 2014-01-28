@@ -8,10 +8,16 @@ from s3_api import upload_image
 from models import Supplier, Item
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 
-def get_item(request, item_id):
+def get_item(request, item_id=None):
+    if item_id is None:
+        item_id = request_arg(request, "item_id")
     return Item.objects.get(id=item_id)
 
-def set_item(request, item_id):
+def set_item(request):
+    """ If item exists, update item. Else, create new item """
+    item = None
+    item_id = ora(request, "item_id")
+    #TODO: supplier = ora(request, "supplier_id")
     if item_id:
         try:
             item = Item.objects.get(id=item_id)
@@ -23,7 +29,7 @@ def set_item(request, item_id):
     item.product_code = osra(request, "product_code")
     #TO TURN ACCOUNTS ON, exchange request.user.email_addr for ACCOUNTS_OFF_EMAIL in lines below
     #ACCOUNTS_OFF_EMAIL = 'jagkgill@gmail.com'
-    item.supplier = Supplier.objects.get(email_addr=request.user.email_addr)
+    item.supplier = Supplier.objects.get(email=request.user.email)
     #boolean value
     item.in_stock = ora(request, "in_stock") if ora(request, "in_stock") else False
     item.made_to_order = ora(request, "made_to_order") if ora(request, "made_to_order") else False
@@ -47,19 +53,19 @@ def set_item(request, item_id):
     #TO TURN ACCOUNTS ON
 
     if request.FILES.get('image1'):
-        item = _add_image(request.FILES['image1'], request.user.email_addr, item)
+        item = _add_image(request.FILES['image1'], request.user.email, item)
     if request.FILES.get('image2'):
-        item = _add_image(request.FILES['image2'], request.user.email_addr, item)
+        item = _add_image(request.FILES['image2'], request.user.email, item)
     if request.FILES.get('image3'):
-        item = _add_image(request.FILES['image3'], request.user.email_addr, item)
+        item = _add_image(request.FILES['image3'], request.user.email, item)
     if request.FILES.get('image4'):
-        item = _add_image(request.FILES['image4'], request.user.email_addr, item)
+        item = _add_image(request.FILES['image4'], request.user.email, item)
     item.save()
     return redirect("/mobile/product_list")
 def lead_time(time, units):
     '''lead time is stored in days, so convert appropriately'''
     if units=="weeks":
-        return time*3
+        return time*7
     elif units=="months":
         return time*30
     else:
