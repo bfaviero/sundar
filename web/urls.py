@@ -9,7 +9,7 @@ urlpatterns = patterns('login',
 
 )
 urlpatterns += patterns('items',
-	url(r'^market', market, name="market"),
+	url(r'^market/', market, name="market"),
 	url(r'^inbox', messages, name="inbox"),
 	url(r'^items/(?P<item_id>\d+)', item, name="item"),
 	url(r'^users/(?P<user_id>\d+)', user, name="user"),

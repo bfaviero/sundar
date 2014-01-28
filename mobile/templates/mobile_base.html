@@ -5,10 +5,10 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{% endblock %} | Sundar</title>
-  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css" type="text/css"/>
+  <link rel="stylesheet" href="{{STATIC_URL}}mobile/bootstrap/css/bootstrap.css" type="text/css"/>
   <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+  <script src="{{STATIC_URL}}mobile/bootstrap/js/bootstrap.min.js"></script>
   {% block head %}
   {% endblock %}
 </head>

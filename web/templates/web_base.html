@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,18 +6,18 @@
 
   <meta charset="utf-8"/>
   <title>{% block title %}{% endblock %} | Sundar</title>
-  <script src="/static/js/vendor/jquery.js"></script>
+  <script src="{% static 'web/js/vendor/jquery.js' %}"></script>
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <link rel="stylesheet" href="/static/css/foundation.css">
-  <link rel="stylesheet" href="/static/css/normalize.css">
-  <link rel="stylesheet" href="/static/css/web.css">
-  <script src="/static/js/vendor/modernizr.js"></script>
+  <link rel="stylesheet" href="{% static 'web/css/foundation.css' %}">
+  <link rel="stylesheet" href="{% static 'web/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'web/css/web.css' %}">
+  <script src="{{STATIC_URL}}web/js/vendor/modernizr.js"></script>
   {% block head %}
   {% endblock %}
 </head>
 
 <body>
-<script src="/static/js/foundation.min.js"></script>
+<script src="{{STATIC_URL}}web/js/foundation.min.js"></script>
 <div class="row">
   <nav class="top-bar" data-topbar>
     <ul class="title-area">

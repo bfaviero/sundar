@@ -24,7 +24,7 @@ ALLOWED_HOSTS = []
 AUTH_PROFILE_MODULE = 'backend.models.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -47,7 +47,7 @@ DATABASES = {
         'PORT': ''
     }
 }
-'''
+
 
 ROOT_URLCONF = 'sundar.urls'
 WSGI_APPLICATION = 'sundar.wsgi.application'
@@ -65,7 +65,6 @@ INSTALLED_APPS = (
     'sundar',
     'web',
     'south',
-    'djangobower',
     'foundation'
 )
 
@@ -105,8 +104,6 @@ TEMPLATE_DIRS = (
     '/var/www/sundar-backend/web/templates/',
 
 )
-BOWER_PATH = '/usr/bin/bower'
-BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media-collected')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
@@ -117,7 +114,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'djangobower.finders.BowerFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
@@ -131,6 +127,7 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     #BASE_DIR + '/../static/',
     #os.path.join(BASE_DIR, "../static/"),
+    #os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, "static"),
     '/var/www/sundar-backend/static/',
 )
