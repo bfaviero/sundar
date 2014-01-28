@@ -1,0 +1,7 @@
+static/css/.DS_Store
+static/img/.DS_Store
+static/js/.DS_Store
+web/.DS_Store
+web/templates/.DS_Store
+venv/
+env/

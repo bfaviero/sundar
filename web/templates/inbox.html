@@ -1,0 +1,43 @@
+{% extends "web_base.html" %}
+{% load filters %}
+{% block title %} Market {% endblock %}
+{% block head %}
+<script src="/static/js/jquery.shuffle.js"></script>
+<link rel="stylesheet" href="/static/css/inbox.css">
+<link rel="stylesheet" href="/static/css/flags.css">
+{% endblock %}
+{% block body %}
+<div class="row">
+  <dl class="accordion" data-accordion="">
+      {% for thread, user2, messages in threads %}
+        <dd>
+          <a href="#{{thread.id}}">Conversation with {{user2.first_name}}</a>
+          <div id="{{thread.id}}" class="content">
+            <div class="panel success callout ">
+              {% for message in messages %}
+                <span class="label secondary radius">{{message.sender.first_name}}</span>
+                <p>{{message.text}}</p>
+                <hr>
+              {% endfor %}
+              <a href="#" data-user-id={{user2.id}} data-thread-id={{thread.id}} class="small button secondary button-message">Reply</a>
+            </div>
+          </div>
+        </dd>
+      {% endfor %}
+  </dl>
+</div>
+<div id="messageModal" class="reveal-modal" data-reveal>
+</div>
+<script>
+$(document).ready(function() {
+  $('.button-message').click(function() {
+    var id = $(this).data('user-id');
+    var thread_id = $(this).data('thread-id');
+    $('#messageModal').foundation('reveal', 'open', {
+        url: '/message/',
+        data: {user_id: id, thread_id: thread_id}
+    });
+  });
+});
+</script>
+{% endblock %}

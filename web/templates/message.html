@@ -1,0 +1,23 @@
+<h2>Message to {{user2.first_name}} {{user2.last_name}}</h2>
+<a class="close-reveal-modal">&#215;</a>
+<form id="message-form" action="/message/" method="post">
+	{% csrf_token %}
+    {% if thread_id %}<input type="hidden" name="thread_id" value="{{thread_id}}">{% endif %}
+	<input type="hidden" name="user2_id" value="{{user2.id}}">
+	<textarea name="text" rows="4"></textarea>
+	<br>
+	<button type="submit" class="radius button">Submit</button>
+</form>
+<script>
+$('#message-form').submit(function() {
+    $.ajax({
+        data: $(this).serialize(), // get the form data
+        type: $(this).attr('method'),
+        url: $(this).attr('action'),
+        success: function(response) {
+        }
+    });
+    $('#messageModal').foundation('reveal', 'close')
+    return false;
+});
+</script>

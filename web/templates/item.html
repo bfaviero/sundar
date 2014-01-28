@@ -1,0 +1,90 @@
+{% extends "web_base.html" %}
+{% load filters %}
+{% block title %} Market {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/css/item.css" type="text/css"/>
+<link rel="stylesheet" href="/static/css/slider.css" type="text/css"/>
+
+<script src="/static/js/jquery.slides.min.js"></script>
+<script>
+	$(function(){
+		$("#slides").slidesjs({
+			width: 50,
+			height: 50
+		});
+	});
+</script>
+{% endblock %}
+{% block body %}
+<div class="row">
+
+	<div class="large-3 large-offset-1 columns img-cell">
+		<div id="slides">
+			<img src="{{item.image1_url}}"><br>
+		</div>
+	</div>
+
+
+	<div class="large-6 columns">
+
+		<h3 class="show-for-small">{{item.product_name}}<hr></h3>
+
+		<div class="panel">
+			<h4 class="hide-for-small">{{item.product_name}}<hr></h4>
+			<h5 class="subheader">{{item.description}}</h5>
+			<div class="row">
+				{% if item.in_stock %}
+				<span class="secondary label">
+					In Stock
+				</span>
+				{% endif %}
+				{% if item.made_to_order %}
+				<span class="secondary label">
+					Made to Order
+				</span>
+
+				{% endif %}
+			</div>
+			<div class="row item-attributes">
+				<div class="large-5 left columns item-attributes-keys">
+					<p>Lead Time:</p>
+					<p>Wholesale Price:</p>
+					<p>Volume Discount:</p>
+					<p>Fabric width:</p>
+					<p>Material type:</p>
+				</div>
+				<div class="large-6 left columns">
+					<p>{{item.lead_time}} days</p>
+					<p>{{item.wholesale_price}} {{item.wholesale_price_units}}</p>
+					<p>{{item.volume_discount}}</p>
+					<p>{{item.fabric_width}} {{item.fabric_width_units}}</p>
+					<p>{{item.material_type}}</p>
+
+
+
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="large-6 small-6 columns">
+				<a href="#" class="small button button-message">Message Seller!</a>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<div id="messageModal" class="reveal-modal" data-reveal>
+</div>
+<script>
+$(document).ready(function() {
+  $('.button-message').click(function() {
+    $('#messageModal').foundation('reveal', 'open', {
+        url: '/message/',
+        data: {user_id: {{supplier.id}}}
+    });
+  });
+});
+</script>
+{% endblock %}
