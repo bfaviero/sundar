@@ -128,7 +128,6 @@ STATICFILES_DIRS = (
     #BASE_DIR + '/../static/',
     #os.path.join(BASE_DIR, "../static/"),
     #os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, "static"),
     '/var/www/sundar-backend/static/',
 )
 AUTH_USER_MODEL = 'backend.CustomUser'
