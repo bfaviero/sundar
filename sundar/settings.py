@@ -19,12 +19,12 @@ SECRET_KEY = 'bpm&!fviriccduomjrc1489h*2kt^l=1g$vmn$er$6)s!oih-+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_PROFILE_MODULE = 'backend.models.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -47,7 +47,7 @@ DATABASES = {
         'PORT': ''
     }
 }
-
+'''
 
 ROOT_URLCONF = 'sundar.urls'
 WSGI_APPLICATION = 'sundar.wsgi.application'
