@@ -9,7 +9,7 @@ import mobile.urls
 import web.urls
 
 urlpatterns = patterns('',
-    #url(r'^$', RedirectView.as_view(url='/web', permanent=False)),
+    url(r'^$', include(web.urls)),
     url(r'^api/', include(backend.urls)),
     url(r'^mobile/', include(mobile.urls)),
     url(r'^', include(web.urls)),
