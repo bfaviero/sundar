@@ -20,12 +20,26 @@
 <div class="row">
 
 	<div class="large-3 large-offset-1 columns img-cell">
-		<div id="slides">
-			<img src="{{item.image1_url}}"><br>
-			{% if item.image2_url %}<img src="{{item.image2_url}}"><br>{%endif%}
-			{% if item.image3_url %}<img src="{{item.image3_url}}"><br>{%endif%}
-			{% if item.image4_url %}<img src="{{item.image4_url}}"><br>{%endif%}
-		</div>
+		<ul class="example-orbit" data-orbit>
+			<li>
+				<img src="{{item.image1_url}}" alt="slide 1" />
+			</li>
+			{% if item.image2_url %}
+			<li>
+				<img src="{{item.image2_url}}" alt="slide 2" />
+			</li>
+			{%endif%}
+			{% if item.image3_url %}
+			<li>
+				<img src="{{item.image3_url}}" alt="slide 3" />
+			</li>
+			{%endif%}
+			{% if item.image4_url %}
+			<li>
+				<img src="{{item.image4_url}}" alt="slide 4" />
+			</li>
+			{%endif%}
+		</ul>
 	</div>
 
 
