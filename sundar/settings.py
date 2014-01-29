@@ -17,25 +17,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'bpm&!fviriccduomjrc1489h*2kt^l=1g$vmn$er$6)s!oih-+'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 AUTH_PROFILE_MODULE = 'backend.models.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sundardb',
-        'USER': 'sundar',
-        'PASSWORD': 'mAR.20ecWk',
-        'HOST': 'sundar-instance-1.cxpjixe6nt87.us-west-2.rds.amazonaws.com',
-        'PORT': '3306',
-    }
-}
-'''
 
 DATABASES = {
     'default': {
