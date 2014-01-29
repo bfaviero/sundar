@@ -1,3 +1,4 @@
+{% load staticfiles %}
 body {
 	background: url({% static 'web/img/background.png' %});
 }

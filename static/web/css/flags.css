@@ -1,3 +1,4 @@
+{% load staticfiles %}
 .flag {
 	width: 16px;
 	height: 11px;
