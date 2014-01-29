@@ -5,7 +5,7 @@
 .minicolors-swatch {
         position: absolute;
         vertical-align: middle;
-        background: url("/static/img/jquery.minicolors.png") -80px 0;
+        background: url("../img/jquery.minicolors.png") -80px 0;
         border: solid 1px #ccc;
         cursor: text;
         padding: 0;

@@ -1,8 +1,7 @@
-{% load staticfiles %}
 .flag {
 	width: 16px;
 	height: 11px;
-	background:url({% static 'web/img/flags.png' %}) no-repeat
+	background:url('../img/flags.png') no-repeat
 }
 
 .flag.flag-ad {background-position: -16px 0}
