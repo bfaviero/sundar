@@ -3,7 +3,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8"/>
   <title>{% block title %}{% endblock %} | Sundar</title>
   <script src="{% static 'web/js/vendor/jquery.js' %}"></script>
@@ -11,13 +10,13 @@
   <link rel="stylesheet" href="{% static 'web/css/foundation.css' %}">
   <link rel="stylesheet" href="{% static 'web/css/normalize.css' %}">
   <link rel="stylesheet" href="{% static 'web/css/web.css' %}">
-  <script src="{{STATIC_URL}}web/js/vendor/modernizr.js"></script>
+  <script src="{% static 'web/js/vendor/modernizr.js' %}"></script>
   {% block head %}
   {% endblock %}
 </head>
 
 <body>
-<script src="{{STATIC_URL}}web/js/foundation.min.js"></script>
+<script src="{% static 'web/js/vendor/foundation.min.js' %}"></script>
 <div class="row">
   <nav class="top-bar" data-topbar>
     <ul class="title-area">

@@ -32,7 +32,7 @@
       width: 13px;
       height: 0;
       padding-top: 13px;
-      background-image: url('/static/img/pagination.png');
+      background-image: url({% static 'web/img/pagination.png' %});
       background-position: 0 0;
       float: left;
       overflow: hidden;
