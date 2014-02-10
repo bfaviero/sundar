@@ -1,6 +1,16 @@
-{% extends "mobile_base.html" %}
-{% block title %}Products {% endblock %}
-{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sundar | Products</title>
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css" type="text/css"/>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
   <div class="container">
 
     <h2>Here are the products you have uploaded:</h2>
@@ -20,7 +30,7 @@
         <td><a href="/mobile/edit_product" class="btn btn-large btn-primary">Add new product</a></td>
         <td></td>
       </tr>
-
+    
     </table>
     <br>
 
@@ -29,4 +39,5 @@
     <br><br><br><br><br><br><br><br><br><br><br><br>
   <div>
 
-{% endblock %}
+</body>
+</html>

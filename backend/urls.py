@@ -7,6 +7,10 @@ urlpatterns = patterns('',
     url(r'^get_item$', get_item),
     url(r'^set_item$', set_item),
     url(r'^delete_item$', delete_item),
+    url(r'^sign_up$', create_supplier),
+    url(r'^update$', update_supplier),
+    url(r'^delete$', delete_supplier),
+    url(r'^login$', login_supplier),
     url(r'^get_items$', get_items),
 
 )

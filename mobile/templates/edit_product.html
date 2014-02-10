@@ -1,12 +1,14 @@
-{% extends "mobile_base.html" %}
-{% block title %} Edit Product {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block head %}
-  <script src="{{STATIC_URL}}mobile/js/tag-it.js" type="text/javascript" charset="utf-8"></script>
-  <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
-  <link href="{{STATIC_URL}}mobile/css/jquery.tagit.css" rel="stylesheet" type="text/css">
-  <script src="{{STATIC_URL}}mobile/js/jquery.minicolors.js"></script>
-  <link rel="stylesheet" href="{{STATIC_URL}}mobile/css/jquery.minicolors.css">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sundar | Edit Product</title>
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css" type="text/css"/>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
   <script>
     var myInput = document.getElementById('myFileInput');
 
@@ -18,65 +20,11 @@
       // the `send` method of an XHR instance.
     }
 
-    //myInput.addEventListener('change', sendPic, false);
-    $(function(){
-        var tags = {{textile_types_list|safe}};
-
-        var countries = {{countries|safe}};
-        $('#textile_type').tagit({
-            availableTags: tags,
-            fieldName: 'type'
-        });
-
-        $( "#country_origin" ).autocomplete({
-          source: countries
-        });
-        $('#color_picker').minicolors({
-          animationSpeed: 50,
-          animationEasing: 'swing',
-          change: null,
-          changeDelay: 0,
-          control: 'hue',
-          defaultValue: '',
-          hide: null,
-          hideSpeed: 100,
-          inline: false,
-          letterCase: 'lowercase',
-          opacity: false,
-          position: 'bottom left',
-          show: null,
-          showSpeed: 100,
-          theme: 'default',
-          change: function(hex, opacity) {
-                  if( !hex ) return;
-                  if( opacity ) hex += ', ' + opacity;
-                  try {
-                          console.log(hex);
-                  } catch(e) {}
-          },
-          theme: 'bootstrap'
-        });
-
-    });
-    $(document).ready(function() {
-      $('.img_upload').change(function() {
-        var that = this;
-        if (this.files && this.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#preview'+$(that).attr("data-num"))
-                        .attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(this.files[0]);
-            }
-      });
-    });
+    myInput.addEventListener('change', sendPic, false);
   </script>
-{% endblock %}
+</head>
 
-{% block body %}
+<body>
   <div class="container">
 
     <h2>Upload a new product, or edit an existing one</h2>
@@ -87,6 +35,7 @@
       {% csrf_token %}
       <input name="item_id" value="{{ item.id }}" type="hidden"/>
       <table class="table table-striped">
+      
         <!-- Product name -->
         <tr>
           <td><label>Product name</label></td>
@@ -103,38 +52,27 @@
         <tr>
           <td><label>Upload photos</label></td>
           <td>
-            <img id="preview1" src="{{ item.image1_url }}" alt="product photograph" width="75" height="75">
-            <input id="image1" data-num="1" class="img_upload" name="image1" type="file" accept="image/*;capture=camera">
-
-            <img id="preview2" src="{{ item.image2_url }}" alt="product photograph" width="75" height="75">
-            <br><input id="image2" data-num="2" class="img_upload" name="image2" type="file" accept="image/*;capture=camera">
-
-            <img id="preview3" src="{{ item.image3_url }}" alt="product photograph" width="75" height="75">
-            <br><input id="image3" data-num="3" class="img_upload" name="image3" type="file" accept="image/*;capture=camera">
-
-            <img id="preview4" src="{{ item.image4_url }}" alt="product photograph" width="75" height="75">
-            <br><input id="image4" data-num="4" class="img_upload" name="image4" type="file" accept="image/*;capture=camera">
+            <img src="{{ item.image1_url }}" width="75" height="75">
+            <input id="image1" name="image1" type="file" accept="image/*;capture=camera">
+            <img src="{{ item.image2_url }}" width="75" height="75">
+            <br><input id="image2" name="image2" type="file" accept="image/*;capture=camera">
+            <img src="{{ item.image3_url }}" width="75" height="75">
+            <br><input id="image3" name="image3" type="file" accept="image/*;capture=camera">
+            <img src="{{ item.image4_url }}" width="75" height="75">
+            <br><input id="image4" name="image4" type="file" accept="image/*;capture=camera">
           </td>
         </tr>
 
         <!-- In stock/made to order -->
         <tr>
-          <td><label>Inventory</label></td>
-          <td><input type="checkbox" id="in_stock" name="in_stock" {% if item.in_stock %} checked="checked"{% endif %}> In stock<br>
-          <input type="checkbox" id="made_to_order" name="made_to_order" {% if item.made_to_order %} checked="checked"{% endif %}> Made to order<br>
-          <input type="checkbox" id="reorder_av" name="reorder_av" {% if item.reorder_av %} checked="checked"{% endif %}> Reorder A/V</td>
+          <td><label>In stock</label></td>
+          <td><input type="checkbox" id="in_stock" name="in_stock" {% if item.in_stock %} checked="checked"{% endif %}></td>
         </tr>
 
         <!-- Lead time -->
         <tr>
           <td><label>Lead time</label></td>
-          <td><input name="lead_time" type="tel" size="10" placeholder="2.5" value="{{ item.lead_time }}"/>
-          <select id="lead_time_unit" name="lead_time_unit">
-            <option value="days">Days</option>
-            <option value="weeks">Weeks</option>
-            <option value="months">Months</option>
-          </select>
-          </td>
+          <td><input name="lead_time" type="tel" size="10" placeholder="2.5" value="{{ item.lead_time }}"/>weeks</td>
         </tr>
 
         <!-- Wholesale price -->
@@ -147,7 +85,7 @@
                 {% endfor %}
               </select></td>
         </tr>
-
+        
         <!-- Volume discount -->
         <tr>
           <td><label>Volume discount</label></td>
@@ -185,11 +123,10 @@
               </select></td>
         </tr>
 
-    <!-- Textile type -->
+        <!-- Textile type -->
         <tr>
           <td><label>Textile type</label></td>
-          <td><input id="textile_type" name="textile_type" type="text" size="25" placeholder="Textile type" value="{{ item.textile_type }}"/></td>
-
+          <td><input name="textile_type" type="text" size="25" placeholder="Textile type" value="{{ item.textile_type }}"/></td>
         </tr>
 
         <!-- Weave type -->
@@ -216,13 +153,13 @@
         <!-- Color -->
         <tr>
           <td><label>Color</label></td>
-          <td><input id="color_picker" name="color" type="text" size="25" placeholder="Imperial Purple (Pantone 19-3528 TCX)" value="{{ item.color }}"/></td>
+          <td><input name="color" type="text" size="25" placeholder="Imperial Purple (Pantone 19-3528 TCX)" value="{{ item.color }}"/></td>
         </tr>
 
         <!-- Country of origin -->
         <tr>
           <td><label>Country of origin</label></td>
-          <td><input id="country_origin" name="country_origin" type="text" size="25" placeholder="India" value="{{ item.country_origin }}"/></td>
+          <td><input name="country_origin" type="text" size="25" placeholder="India" value="{{ item.country_origin }}"/></td>
         </tr>
 
       </table>
@@ -236,4 +173,6 @@
     <p>Having trouble with this form, or want to send feedback? <a href="mailto:hello@sundar.io">Contact Sundar</a></p>
     <br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
-{% endblock %}
+
+</body>
+</html>

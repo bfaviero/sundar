@@ -16,10 +16,10 @@ def create_supplier(request):
         password_candidate = make_password(password)
         if not is_password_usable(password_candidate):
             return HttpResponse("Password cannot be empty.")
-        else:
+        else: 
             new_supp = Supplier()
             new_supp.set_password(password)
-            new_supp.email = request_arg(request, "email")
+            new_supp.email_addr = request_arg(request, "email_addr")
             new_supp.company_name = request_arg(request, "company_name")
             new_supp.save()
             return redirect("/mobile/")
@@ -32,9 +32,9 @@ def delete_supplier(request):
     return HttpResponse("SUCCESS delete_supplier ")
 
 def login_supplier(request):
-    email = request_arg(request, "email")
+    email_addr = request_arg(request, "email_addr")
     password = request_arg(request, "password")
-    user = authenticate(email=email_addr, password=password)
+    user = authenticate(email_addr=email_addr, password=password)
     if user:
             login(request, user)
             return redirect("/mobile/product_list")

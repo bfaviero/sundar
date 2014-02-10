@@ -1,7 +1,16 @@
-{% extends "mobile_base.html" %}
+    <!DOCTYPE html>
+<html lang="en">
 
-{% block title %} Sign up {% endblock %}
-{% block body %}
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sundar | Sign up</title>
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css" type="text/css"/>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
   <div class="container">
 
     <h3>Create an account as a Sundar supplier</h3>
@@ -11,7 +20,7 @@
     <form id="signup_form" action="/mobile/create_user">
       {% csrf_token %}
       <table class="table">
-        <!-- Username -->
+        <!-- Username --> 
         <tr>
           <td><label>Company Name</label></td>
           <td><input name="company_name" type="text" placeholder="Company Name" maxlength="128"/></td>
@@ -21,7 +30,7 @@
         <!-- //TODO: I was thinking of making Email Address the unique account ID because I think email addresses are easier for users to remember than usernames they have to create, but this is up to you! -->
         <tr>
           <td><label>Email Address</label></td>
-          <td><input name="email" type="text" placeholder="name@example.com" maxlength="30"/></td>
+          <td><input name="email_addr" type="text" placeholder="name@example.com" maxlength="30"/></td>
         </tr>
 
         <!-- Password -->
@@ -42,7 +51,7 @@
           <td></td>
         </tr>
       <br>
-
+      
       </table>
     </form>
 
@@ -51,4 +60,5 @@
     <br><br><br><br><br><br><br><br><br><br><br><br>
   <div>
 
-{% endblock %}
+</body>
+</html>

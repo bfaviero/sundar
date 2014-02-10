@@ -1,24 +1,21 @@
 from django.db import models
 from django import forms
 from decimal import Decimal
-from django.contrib.auth.models import User, AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth.models import User, AbstractBaseUser
 from django import forms
 from datetime import datetime
 from django.contrib.auth.hashers import make_password, check_password, is_password_usable
-from datetime import datetime
-from django.contrib.auth import get_user_model
 
 class CustomBackend:
-    def authenticate(self, email=None, password=None, username=None):
-        if username and not email:
-            email=username
+    #This must be called before login(request, user) 
+    def authenticate(self, email_addr=None, password=None):
         try:
-            user = get_user_model().objects.get(email=email)
+            user = CustomUser.objects.get(email_addr=email_addr)
             if user.check_password(password):
                 return user
             else:
                 return None
-        except get_user_model().DoesNotExist:
+        except User.DoesNotExist:
             return None
     # Required
     def get_user(self, user_id):
@@ -27,109 +24,23 @@ class CustomBackend:
         except User.DoesNotExist:
             return None
 
-class CustomUserManager(BaseUserManager):
-
-        def _create_user(self, email, password,
-                         is_staff, is_superuser, **extra_fields):
-            """
-            Creates and saves a User with the given email and password.
-            """
-            now = datetime.now()
-            if not email:
-                raise ValueError('The given email must be set')
-            email = self.normalize_email(email)
-            user = self.model(email=email,
-                              is_staff=is_staff, is_active=True,
-                              is_superuser=is_superuser, last_login=now,
-                              date_joined=now, **extra_fields)
-            user.set_password(password)
-            user.save(using=self._db)
-            return user
-
-        def create_user(self, email, password=None, **extra_fields):
-            return self._create_user(email, password, False, False,
-                                     **extra_fields)
-
-        def create_superuser(self, email, password, **extra_fields):
-            return self._create_user(email, password, True, True,
-                                     **extra_fields)
-
-class CustomUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(max_length=254, unique=True)
-    first_name = models.CharField(max_length=30, blank=True)
-    last_name = models.CharField(max_length=30, blank=True)
-    is_staff = models.BooleanField(default=False,
-        help_text='Designates whether the user can log into this admin '
-                    'site.')
-    is_active = models.BooleanField(default=True,
-        help_text='Designates whether this user should be treated as '
-                    'active. Unselect this instead of deleting accounts.')
+class CustomUser(AbstractBaseUser):
+    """base User model"""
+    """inherited fields: id, password, last_login"""
+    email_addr = models.EmailField(max_length=30, unique=True, db_index=True)
+    time_created = models.DateTimeField(auto_now_add=True)
     last_logged_in = models.DateTimeField(auto_now=True)
-    date_joined = models.DateTimeField(auto_now_add=True)
-
-    objects = CustomUserManager()
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
-
-    class Meta:
-        verbose_name = 'user'
-        verbose_name_plural = 'users'
-
-    def get_absolute_url(self):
-        return "/users/%s/" % urlquote(self.email)
-
-    def get_full_name(self):
-        """
-        Returns the first_name plus the last_name, with a space in between.
-        """
-        full_name = '%s %s' % (self.first_name, self.last_name)
-        return full_name.strip()
-
-    def get_short_name(self):
-        "Returns the short name for the user."
-        return self.first_name
-
-    def email_user(self, subject, message, from_email=None):
-        """
-        Sends an email to this User.
-        """
-        send_mail(subject, message, from_email, [self.email])
-
-
-
-
+    USERNAME_FIELD = 'email_addr'
+  
 class Supplier(CustomUser):
     """Supplier description"""
     company_name = models.CharField(db_index=True, max_length=128, default="", blank=True)
+    is_staff = models.BooleanField(default=False)
+    CustomUser.REQUIRED_FIELDS += ['company_name']
 
 class Designer(CustomUser):
     """Designer description"""
     pass
-
-class Thread(models.Model):
-    pass
-
-CATEGORY_CHOICES = (('L', 'Like'), ('M', 'Message'))
-
-class Message(models.Model):
-
-    sender = models.ForeignKey(CustomUser, related_name="sent_messages")
-    recipient = models.ForeignKey(CustomUser, related_name="received_messages")
-
-    thread = models.ForeignKey(Thread, related_name="messages")
-    category = models.CharField(max_length=2, choices=CATEGORY_CHOICES)
-    text = models.TextField(blank=True, null=True)
-
-class Rating(models.Model):
-    supplier =  models.ForeignKey(Supplier, related_name="ratings")
-    designer = models.ForeignKey(Designer, related_name="ratings")
-    rating = models.PositiveSmallIntegerField()
-
-class Like(models.Model):
-    supplier = models.ForeignKey(Supplier)
-    designer = models.ForeignKey(Designer)
-    created_at = models.DateTimeField(auto_now_add=True)
 
 class Item(models.Model):
     """supplier items"""
@@ -141,14 +52,12 @@ class Item(models.Model):
     image5_url = models.CharField(max_length=255, default="", blank=True)
     product_name = models.CharField(max_length=128, default="", blank=True)
     product_code = models.CharField(max_length=128, default="", blank=True)
-    in_stock = models.BooleanField(default=True, blank=True)
-    price_on_request = models.BooleanField(default=False, blank=True)
-    made_to_order = models.BooleanField(default=False, blank=True)
-    lead_time = models.DecimalField(max_digits=19, decimal_places=2)
-    wholesale_price = models.DecimalField(max_digits=19, decimal_places=2)
+    in_stock = models.BooleanField(default="", blank=True)
+    lead_time = models.CharField(max_length=32, default="", blank=True)
+    wholesale_price = models.CharField(max_length=32, default="", blank=True)
     wholesale_price_units = models.CharField(max_length=32, default="", blank=True)
     volume_discount = models.CharField(max_length=32, default="", blank=True)
-    fabric_width = models.DecimalField(max_digits=19, decimal_places=5)
+    fabric_width = models.CharField(max_length=32, default="", blank=True)
     fabric_width_units = models.CharField(max_length=32, default="", blank=True)
     material_type = models.CharField(max_length=32, default="", blank=True)
     fiber_type = models.CharField(max_length=32, default="", blank=True)
@@ -157,19 +66,19 @@ class Item(models.Model):
     description = models.CharField(max_length=512, default="", blank=True)
     weight = models.CharField(max_length=32, default="", blank=True)
     color = models.CharField(max_length=32, default="", blank=True)
-    dyeing = models.CharField(max_length=32, default="", blank=True)
+    dying = models.CharField(max_length=32, default="", blank=True)
     color_fast_testing = models.CharField(max_length=32, default="", blank=True)
     country_origin = models.CharField(max_length=32, default="", blank=True)
     sustainability = models.CharField(max_length=32, default="", blank=True)
+    cost = models.CharField(max_length=32, default="", blank=True)
     time_updated = models.DateTimeField(auto_now=True)
     time_created = models.DateTimeField(auto_now_add=True)
-    def get_absolute_url(self):
-        return "/items/{{item.id}}/"
+
 
 class PhotoUrl(models.Model):
     url = models.CharField(max_length=255)
     uploaded = models.DateTimeField()
-
+    
     def save(self):
         self.uploaded = datetime.now()
         models.Model.save(self)

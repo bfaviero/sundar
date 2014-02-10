@@ -1,35 +1,36 @@
-{% extends "web_base.html" %}
-{% block title %} Login {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block body %}
-<div class="row">
-  <br><br>
-  <div class="span4">
-    <h1>Sundar: the material-sourcing marketplace</h1>  <!-- Replace this with a catchy header and title -->
+<head>
+  <meta charset="utf-8"/>
+  <title>Log In</title>
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css" type="text/css"/>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</head>
 
-    <br>
-    <h2>Log In</h2>
-    {% for error in form.non_field_errors %}
-      <p style="color: red;">{{ error }}</p>
-    {% endfor %}
+<body>
+  <div class="container">
+    <br><br>
+    <div class="span4">
+      <h1>Sundar: the material-sourcing marketplace</h1>  <!-- Replace this with a catchy header and title -->
 
-    <form action="" method="post">
+      <br>
+ 
+      <h2>Log In</h2>
+      <form method="POST" action="/validate_login">  <!-- Replace 'action="/validate_login"' with something that processes your POST request and validates the password -->
         {% csrf_token %}
-        <div class="field">
-            {{ form.email.errors }}
-            {{ form.email }}
-        </div>
-        <div class="field">
-            {{ form.password.errors }}
-            {{ form.password }}
-        </div>
+        <input name="username" type="text" placeholder="Username"/>
+        <input name="password" type="password" placeholder="Password"/>
         <input type="submit" name="submit" value="Log in" class="btn btn-large btn-primary">
-    </form>
-    <p>Trouble logging in? <a href="mailto:hello@sundar.io">Contact Sundar</a></p>
+      </form>
 
-    <hr>
-    <p>Want to join the material-sourcing marketplace? <a href="mailto:hello@sundar.io">Request an invitation</a></p>
+      <p>Trouble logging in? <a href="mailto:hello@sundar.io">Contact Sundar</a></p>  <!-- Replace the 'mailto:' link with a valid email address or other contact method -->
 
-  </div>
-</div>
-{% endblock %}
+      <hr>
+      <p>Want to join the material-sourcing marketplace? <a href="mailto:hello@sundar.io">Request an invitation</a></p>
+
+    </div>
+  <div>
+</body>
+</html>

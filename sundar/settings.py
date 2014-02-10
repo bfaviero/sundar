@@ -24,18 +24,16 @@ ALLOWED_HOSTS = []
 AUTH_PROFILE_MODULE = 'backend.models.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'dt.db',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': ''
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sundardb',
+        'USER': 'sundar',
+        'PASSWORD': 'mAR.20ecWk',
+        'HOST': 'sundar-instance-1.cxpjixe6nt87.us-west-2.rds.amazonaws.com',
+        'PORT': '3306',
     }
 }
-
 
 ROOT_URLCONF = 'sundar.urls'
 WSGI_APPLICATION = 'sundar.wsgi.application'
@@ -53,7 +51,6 @@ INSTALLED_APPS = (
     'sundar',
     'web',
     'south',
-    'foundation'
 )
 
 AUTHENTICATION_BACKENDS = ('backend.models.CustomBackend',)
@@ -70,6 +67,7 @@ MIDDLEWARE_CLASSES = (
 PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
     'django.contrib.auth.hashers.BCryptPasswordHasher',
     'django.contrib.auth.hashers.SHA1PasswordHasher',
     'django.contrib.auth.hashers.MD5PasswordHasher',
@@ -92,6 +90,7 @@ TEMPLATE_DIRS = (
     '/var/www/sundar-backend/web/templates/',
 
 )
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media-collected')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
@@ -115,12 +114,11 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     #BASE_DIR + '/../static/',
     #os.path.join(BASE_DIR, "../static/"),
-    #os.path.join(BASE_DIR, 'static'),
     '/var/www/sundar-backend/static/',
 )
-AUTH_USER_MODEL = 'backend.CustomUser'
-LOGIN_URL = '/login/'
-ACCOUNT_USERNAME_REQUIRED = False
+
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -129,8 +127,3 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-
-try:
-    from settings_local import *
-except:
-    pass
