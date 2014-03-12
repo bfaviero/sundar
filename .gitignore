@@ -6,3 +6,4 @@ web/templates/.DS_Store
 venv/
 env/
 static/
+*.pyc
